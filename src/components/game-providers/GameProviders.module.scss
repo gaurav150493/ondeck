@@ -1,0 +1,32 @@
+@use "variables" as v;
+@use "viewPortMixins" as vp;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 22px;
+
+  @include vp.md-up {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  @include vp.lg-up {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 32px;
+  }
+}
+
+.tile {
+  display: flex;
+  overflow: hidden;
+  border-radius: v.$card-radius;
+}
+
+.logo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 331 / 208;
+  object-fit: contain;
+}

@@ -1,0 +1,110 @@
+@use "variables" as v;
+@use "viewPortMixins" as vp;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px;
+  margin-top: 24px;
+
+  @include vp.md-up {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @include vp.xl-up {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    margin-top: 39px;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 0.5px solid v.$gold;
+  border-radius: v.$card-radius;
+  background: v.$black;
+  transition: border-color 0.2s ease;
+}
+
+.card:hover {
+  border-color: v.$gold-pale;
+}
+
+.thumb {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 216 / 114;
+  object-fit: cover;
+
+  @include vp.lg-up {
+    aspect-ratio: 183 / 222;
+  }
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0;
+  min-height: 113px;
+  padding: 10px;
+
+  @include vp.lg-up {
+    min-height: 135px;
+  }
+}
+
+.title {
+  margin-bottom: 20px;
+  font-size: v.$eyebrow;
+  font-weight: v.$weight-semibold;
+  line-height: calc(#{v.$eyebrow-line} / #{v.$eyebrow});
+  text-transform: uppercase;
+
+  @include vp.lg-up {
+    min-height: 2.42em;
+  }
+}
+
+.description {
+  margin-bottom: 8px;
+  color: v.$muted;
+  font-size: 14px;
+  line-height: calc(20 / 14);
+
+  @include vp.lg-up {
+    font-size: v.$small;
+    line-height: calc(#{v.$small-line} / #{v.$small});
+  }
+}
+
+.arrow {
+  color: v.$gold;
+}
+
+@include vp.xl-up {
+  .card {
+    transform: translateX(calc(var(--i) * (25px - 100% - 11px))) scale(0.97);
+    transform-origin: left center;
+    opacity: 0.85;
+    transition: transform 0.62s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.4s ease;
+    transition-delay: calc(var(--i) * 70ms);
+    will-change: transform;
+    z-index: calc(10 - var(--i));
+  }
+
+  .dealt .card {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transform: none !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
+}

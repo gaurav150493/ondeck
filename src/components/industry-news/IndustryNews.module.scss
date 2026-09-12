@@ -1,0 +1,94 @@
+@use "variables" as v;
+@use "viewPortMixins" as vp;
+
+.grid {
+  display: grid;
+  gap: 14px;
+  margin-top: 22px;
+
+  @include vp.md-up {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include vp.lg-up {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 26px;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid v.$gold;
+  border-radius: v.$card-radius;
+  transition: border-color 0.2s ease;
+}
+
+.card:hover {
+  border-color: v.$gold;
+}
+
+.thumb {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 444 / 99;
+  object-fit: cover;
+
+  @include vp.lg-up {
+    aspect-ratio: 276 / 166;
+  }
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 12px;
+}
+
+.tag {
+  margin-bottom: 8px;
+  color: v.$blue;
+  font-size: v.$eyebrow;
+  font-weight: v.$weight-semibold;
+  line-height: calc(#{v.$eyebrow-line} / #{v.$eyebrow});
+  text-transform: uppercase;
+
+  @include vp.lg-up {
+    font-size: v.$tiny;
+    line-height: calc(12.1 / 10);
+  }
+}
+
+.title {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: v.$weight-regular;
+  line-height: calc(20 / 14);
+
+  @include vp.lg-up {
+    font-size: v.$small;
+    line-height: calc(#{v.$small-line} / #{v.$small});
+  }
+}
+
+.date {
+  color: v.$muted;
+  font-size: v.$tiny;
+  line-height: 1.21;
+}
+
+.link {
+  margin-top: 8px;
+  color: v.$blue;
+  font-size: 13px;
+  line-height: calc(15 / 13);
+}
+
+@include vp.lg-up {
+  .link {
+    display: none;
+  }
+}

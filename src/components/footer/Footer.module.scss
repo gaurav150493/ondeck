@@ -1,0 +1,106 @@
+@use "variables" as v;
+@use "viewPortMixins" as vp;
+
+.footer {
+  border-top: 1px solid v.$line;
+  background: v.$black;
+  padding-block: 44px 32px;
+}
+
+.inner {
+  display: grid;
+  gap: 36px;
+
+  @include vp.lg-up {
+    grid-template-columns: minmax(240px, 300px) 1fr;
+    gap: 56px;
+  }
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.socials {
+  display: flex;
+  gap: 14px;
+}
+
+.social {
+  display: inline-flex;
+  color: v.$muted;
+  transition: color 0.2s ease;
+}
+
+.social:hover {
+  color: v.$gold;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px 20px;
+
+  @include vp.lg-up {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.columnTitle {
+  margin-bottom: 12px;
+  font-size: v.$eyebrow;
+  font-weight: v.$weight-regular;
+  line-height: calc(#{v.$eyebrow-line} / #{v.$eyebrow});
+  text-transform: uppercase;
+
+  @include vp.lg-up {
+    font-size: v.$small;
+    line-height: 1.21;
+  }
+}
+
+.columnLink {
+  display: block;
+  padding-block: 4px;
+  color: v.$muted;
+  font-size: v.$small;
+  line-height: calc(25 / 12);
+  transition: color 0.2s ease;
+}
+
+.columnLink:hover {
+  color: v.$white;
+}
+
+.about {
+  max-width: 34ch;
+  color: v.$muted;
+  font-size: v.$small;
+  line-height: calc(20 / 12);
+}
+
+.legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.legalLink {
+  color: v.$muted;
+  font-size: v.$tiny;
+  line-height: calc(#{v.$tiny-line} / #{v.$tiny});
+  transition: color 0.2s ease;
+}
+
+.legalLink:hover {
+  color: v.$white;
+}
+
+.copyright {
+  color: v.$muted;
+  font-size: v.$tiny;
+  line-height: calc(#{v.$tiny-line} / #{v.$tiny});
+}

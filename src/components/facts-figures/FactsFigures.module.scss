@@ -1,0 +1,94 @@
+@use "variables" as v;
+@use "viewPortMixins" as vp;
+
+.grid {
+  display: flex;
+  gap: 5px;
+  margin-top: 34px;
+  margin-inline: calc(#{v.$inset-mobile} * -1);
+  padding-inline: v.$inset-mobile;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+
+  @include vp.lg-up {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+    margin-inline: 0;
+    padding-inline: 0;
+    overflow-x: visible;
+  }
+}
+
+.fact {
+  display: flex;
+  flex: 0 0 150px;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding-block: 10px;
+  scroll-snap-align: start;
+  text-align: center;
+
+  @include vp.lg-up {
+    flex: 1 1 auto;
+    gap: 2px;
+  }
+}
+
+.value {
+  background: v.$gold-button;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 36px;
+  font-weight: v.$weight-regular;
+  line-height: calc(43.6 / 36);
+}
+
+.label {
+  font-size: 14px;
+  font-weight: v.$weight-semibold;
+  line-height: calc(16.9 / 14);
+  text-transform: uppercase;
+
+  @include vp.lg-up {
+    font-size: v.$label;
+    line-height: calc(#{v.$label-line} / #{v.$label});
+  }
+}
+
+.note {
+  color: v.$muted;
+  font-size: v.$small;
+  line-height: calc(#{v.$tiny-line} / #{v.$small});
+}
+
+.grid::-webkit-scrollbar {
+  display: none;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+  margin-top: 12px;
+
+  @include vp.lg-up {
+    display: none;
+  }
+}
+
+.dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: v.$muted;
+  opacity: 0.4;
+}
+
+.dots span:first-child {
+  opacity: 1;
+}

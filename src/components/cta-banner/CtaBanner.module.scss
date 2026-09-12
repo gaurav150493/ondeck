@@ -1,0 +1,115 @@
+@use "variables" as v;
+@use "viewPortMixins" as vp;
+
+.banner {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  @include vp.md-up {
+    display: block;
+    min-height: 242px;
+  }
+}
+
+.media {
+  position: relative;
+  width: calc(100% - #{v.$inset-mobile} * 2);
+  margin-inline: auto;
+  aspect-ratio: 442 / 219;
+  overflow: hidden;
+
+  @include vp.md-up {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: 100%;
+    margin-inline: 0;
+    aspect-ratio: auto;
+  }
+}
+
+.image {
+  position: absolute;
+  top: -128.3903%;
+  left: -148.7849%;
+  width: 249.0141%;
+  height: 268.1186%;
+  max-width: none;
+
+  @include vp.md-up {
+    top: -140.0714%;
+    left: -3.82812%;
+    width: 103.5191%;
+    height: 292.1043%;
+  }
+}
+
+.inner {
+  padding-block: 15px 0;
+
+  @include vp.md-up {
+    padding-top: 81px;
+  }
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: v.$weight-regular;
+  line-height: 1.21;
+
+  @include vp.lg-up {
+    font-size: 32px;
+  }
+}
+
+.accent {
+  color: v.$gold;
+
+  @include vp.md-up {
+    display: block;
+  }
+}
+
+.subtitle {
+  color: v.$muted;
+  font-size: 14px;
+  line-height: calc(16.9 / 14);
+
+  @include vp.lg-up {
+    font-size: v.$body;
+    line-height: calc(#{v.$eyebrow-line} / #{v.$eyebrow});
+  }
+}
+
+.action {
+  padding: 22px v.$inset-mobile 16px;
+
+  @include vp.md-up {
+    position: absolute;
+    top: 54.13%;
+    left: 50%;
+    padding: 0;
+    transform: translateX(-50%);
+  }
+}
+
+.action a {
+  height: 26px;
+  padding-inline: 12px;
+}
+
+@media (min-width: 768px) {
+  .action a {
+    height: 46px;
+    padding-inline: 18px;
+  }
+}

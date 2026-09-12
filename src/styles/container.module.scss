@@ -1,0 +1,27 @@
+@use "variables" as v;
+@use "viewPortMixins" as vp;
+
+.container {
+  width: 100%;
+  max-width: calc(v.$content + v.$inset * 2);
+  margin: 0 auto;
+  padding-inline: v.$inset-mobile;
+
+  @include vp.lg-up {
+    padding-inline: v.$inset;
+  }
+}
+
+.section {
+  padding-block: 0;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 57px;
+
+  @include vp.lg-up {
+    gap: 60px;
+  }
+}

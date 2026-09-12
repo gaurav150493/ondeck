@@ -1,0 +1,92 @@
+@use "variables" as v;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 34px;
+  padding-inline: 14px;
+  border: 1px solid transparent;
+  border-radius: v.$radius-sm;
+  font-size: 12px;
+  font-weight: v.$weight-regular;
+  line-height: 1;
+  white-space: nowrap;
+  transition: filter 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.filled {
+  background: v.$gold-button;
+  color: v.$black;
+}
+
+.filled:hover {
+  filter: brightness(1.08);
+}
+
+.hollow {
+  background: v.$surface;
+  border-color: v.$gold;
+  color: v.$white;
+}
+
+.hollow .icon {
+  color: v.$gold;
+}
+
+.hollow:hover {
+  border-color: v.$gold-pale;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.icon {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+@media (min-width: 1024px) {
+  .button {
+    height: 46px;
+    padding-inline: 18px;
+    font-size: 14px;
+  }
+
+  .large {
+    font-size: v.$body;
+  }
+}
+
+.gradient {
+  position: relative;
+  background: transparent;
+  border-color: transparent;
+  color: v.$blue;
+}
+
+.gradient .icon {
+  color: v.$cyan;
+}
+
+.gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(180deg, #5cb4ff 0%, #0858ff 100%);
+  opacity: 0.5;
+  pointer-events: none;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.gradient:hover::before {
+  opacity: 1;
+}

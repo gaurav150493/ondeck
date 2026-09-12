@@ -1,0 +1,102 @@
+@use "variables" as v;
+@use "viewPortMixins" as vp;
+
+.grid {
+  display: grid;
+  gap: 14px;
+  margin-top: 22px;
+
+  @include vp.lg-up {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px;
+    margin-top: 26px;
+  }
+}
+
+.card {
+  display: flex;
+  overflow: hidden;
+  border: 1px solid v.$line;
+  border-radius: v.$card-radius;
+}
+
+.card + .card {
+  margin-top: 6px;
+
+  @include vp.lg-up {
+    margin-top: 0;
+  }
+}
+
+.image {
+  flex: 0 0 46.5%;
+  width: 46.5%;
+  height: auto;
+  object-fit: cover;
+  align-self: stretch;
+
+  @include vp.lg-up {
+    flex-basis: 50%;
+    width: 50%;
+  }
+}
+
+.body {
+  display: flex;
+  flex: 0 0 53.5%;
+  flex-direction: column;
+  width: 53.5%;
+  padding: 16px;
+
+  @include vp.lg-up {
+    flex-basis: 50%;
+    width: 50%;
+  }
+}
+
+.title {
+  margin-bottom: 10px;
+  font-size: v.$eyebrow;
+  font-weight: v.$weight-semibold;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.blue {
+  color: v.$blue;
+}
+
+.violet {
+  color: v.$violet;
+}
+
+.points {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.point {
+  position: relative;
+  padding-left: 13px;
+  color: v.$muted;
+  font-size: 14px;
+  line-height: calc(20 / 14);
+
+  @include vp.lg-up {
+    font-size: v.$small;
+    line-height: calc(#{v.$small-line} / #{v.$small});
+  }
+}
+
+.point::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+}

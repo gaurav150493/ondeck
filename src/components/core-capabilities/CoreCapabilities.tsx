@@ -1,0 +1,88 @@
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/common/Button/Button";
+import { ArrowRightIcon } from "@/common/icons";
+import { SectionHeading } from "@/common/SectionHeading/SectionHeading";
+import containerStyles from "@/styles/container.module.scss";
+import { CapabilityLineDefs, CapabilityLine } from "./CapabilityLines";
+import styles from "./CoreCapabilities.module.scss";
+import { capabilities } from "./coreCapabilities.constants";
+import type { Capability, CapabilitySide } from "./coreCapabilities.types";
+
+function CapabilityItem({ capability }: { capability: Capability }) {
+  return (
+    <Link href={capability.href} data-node={capability.id} className={styles.item}>
+      <span className={styles.iconWrap}>{capability.icon}</span>
+      <span className={styles.text}>
+        <span className={styles.title}>{capability.title}</span>
+        <span className={styles.meta}>{capability.meta}</span>
+        <span className={styles.detail}>{capability.detail}</span>
+      </span>
+      <span className={styles.arrow}>
+        <ArrowRightIcon />
+      </span>
+    </Link>
+  );
+}
+
+function CapabilityItems({ side }: { side: CapabilitySide }) {
+  const className = `${styles.items} ${side === "left" ? styles.itemsLeft : styles.itemsRight}`;
+
+  return (
+    <div className={className}>
+      {capabilities
+        .filter((capability) => capability.side === side)
+        .map((capability) => (
+          <CapabilityItem key={capability.id} capability={capability} />
+        ))}
+    </div>
+  );
+}
+
+export function CoreCapabilities() {
+  return (
+    <section className={containerStyles.section} aria-labelledby="core-capabilities">
+      <div className={containerStyles.container}>
+        <div className={styles.panel}>
+          <div className={styles.left}>
+            <SectionHeading
+              id="core-capabilities"
+              eyebrow="Core capabilities & modules"
+              title={
+                <>
+                  Engineered for scale.
+                  <br />
+                  Build for
+                </>
+              }
+              highlight="growth."
+            />
+            <Button href="/platform/modules" variant="gradient" size="large" icon={<ArrowRightIcon />}>
+              Explore All Modules
+            </Button>
+          </div>
+
+          <div className={styles.right}>
+            <div className={styles.visual}>
+              <Image
+                className={styles.image}
+                src="/images/capabilities.png"
+                alt=""
+                width={652}
+                height={348}
+              />
+            </div>
+
+            <CapabilityItems side="left" />
+            <CapabilityItems side="right" />
+
+            <CapabilityLineDefs />
+            {capabilities.map((capability) => (
+              <CapabilityLine key={capability.id} id={capability.id} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

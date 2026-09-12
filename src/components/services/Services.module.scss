@@ -1,0 +1,86 @@
+@use "variables" as v;
+@use "viewPortMixins" as vp;
+
+.list {
+  display: grid;
+  gap: 8px;
+  margin-top: 18px;
+
+  @include vp.lg-up {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 22px;
+    margin-top: 22px;
+  }
+}
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding-block: 8px;
+  border-bottom: 1px solid v.$line;
+
+  @include vp.lg-up {
+    padding-block: 0;
+    border-bottom: 0;
+  }
+}
+
+.iconWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  border: 1px solid v.$blue-deep;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  color: v.$white;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  margin-top: 10px;
+}
+
+.title {
+  margin-bottom: 6px;
+  font-size: v.$eyebrow;
+  font-weight: v.$weight-semibold;
+  line-height: calc(#{v.$eyebrow-line} / #{v.$eyebrow});
+
+  @include vp.lg-up {
+    font-size: v.$label;
+    line-height: calc(#{v.$label-line} / #{v.$label});
+  }
+}
+
+.description {
+  margin-bottom: 6px;
+  color: v.$muted;
+  font-size: 14px;
+  line-height: calc(16.9 / 14);
+
+  @include vp.lg-up {
+    font-size: v.$tiny;
+    line-height: calc(#{v.$tiny-line} / #{v.$tiny});
+  }
+}
+
+.link {
+  color: v.$blue;
+  font-size: 13px;
+  line-height: calc(15 / 13);
+  transition: color 0.2s ease;
+
+  @include vp.lg-up {
+    font-size: v.$tiny;
+  }
+}
+
+.link:hover {
+  color: v.$gold;
+}

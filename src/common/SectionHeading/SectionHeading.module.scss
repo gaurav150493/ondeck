@@ -1,0 +1,40 @@
+@use "variables" as v;
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.eyebrow {
+  color: v.$cyan;
+  font-size: 12px;
+  font-weight: v.$weight-regular;
+  line-height: calc(14.5 / 12);
+  text-transform: uppercase;
+
+  @media (min-width: 1024px) {
+    font-size: v.$eyebrow;
+    line-height: calc(#{v.$eyebrow-line} / #{v.$eyebrow});
+  }
+}
+
+.gold {
+  color: v.$gold;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: v.$weight-regular;
+  line-height: calc(26.6 / 22);
+  letter-spacing: 0;
+
+  @media (min-width: 1024px) {
+    font-size: v.$h2;
+    line-height: calc(#{v.$h2-line} / #{v.$h2});
+  }
+}
+
+.highlight {
+  color: v.$gold;
+}

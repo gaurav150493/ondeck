@@ -1,0 +1,111 @@
+@use "variables" as v;
+@use "viewPortMixins" as vp;
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 24px;
+
+  @include vp.lg-up {
+    display: block;
+    min-height: 673px;
+    padding-block: 208px 0;
+  }
+}
+
+.background {
+  order: -1;
+  width: 100%;
+  height: auto;
+  margin-bottom: 24px;
+  aspect-ratio: 480 / 420;
+  object-fit: cover;
+  object-position: center;
+
+  @include vp.lg-up {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    height: 100%;
+    margin-bottom: 0;
+    aspect-ratio: auto;
+    object-position: center right;
+  }
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.eyebrow {
+  color: v.$cyan;
+  font-size: 12px;
+  font-weight: v.$weight-regular;
+  line-height: calc(14.5 / 12);
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+
+  @include vp.lg-up {
+    font-size: v.$eyebrow;
+    font-weight: v.$weight-semibold;
+    line-height: calc(#{v.$eyebrow-line} / #{v.$eyebrow});
+    letter-spacing: 0.8px;
+  }
+}
+
+.title {
+  margin-top: 12px;
+  font-weight: v.$weight-semibold;
+  letter-spacing: 0;
+}
+
+.titleTop {
+  display: block;
+  font-size: 36px;
+  line-height: 1.2;
+
+  @include vp.lg-up {
+    max-width: 212px;
+    font-size: v.$h1;
+    line-height: v.$h1-line;
+  }
+}
+
+.titleAccent {
+  display: block;
+  margin-top: 6px;
+  background: v.$gold-heading;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 36px;
+  line-height: calc(43.6 / 36);
+
+  @include vp.lg-up {
+    font-size: v.$h1-accent;
+    line-height: calc(#{v.$h1-accent-line} / #{v.$h1-accent});
+  }
+}
+
+.tagline {
+  max-width: none;
+  margin-top: 12px;
+  font-size: v.$body;
+  line-height: calc(19.4 / 16);
+
+  @include vp.lg-up {
+    max-width: 248px;
+    line-height: calc(#{v.$body-line} / #{v.$body});
+  }
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}

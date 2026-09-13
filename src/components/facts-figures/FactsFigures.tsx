@@ -19,12 +19,6 @@ export function FactsFigures() {
             </li>
           ))}
         </ul>
-
-        <div className={styles.dots} aria-hidden="true">
-          <span />
-          <span />
-          <span />
-        </div>
       </div>
     </section>
   );

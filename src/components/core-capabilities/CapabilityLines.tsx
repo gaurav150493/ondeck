@@ -50,7 +50,7 @@ const lines: Record<string, LineSpec> = {
   },
 };
 
-export function CapabilityLine({ id }: { id: string }) {
+export function CapabilityLine({ id, index }: { id: string; index: number }) {
   const line = lines[id];
 
   return (
@@ -60,6 +60,7 @@ export function CapabilityLine({ id }: { id: string }) {
       viewBox={line.viewBox}
       preserveAspectRatio="none"
       data-line={id}
+      data-index={index}
       aria-hidden="true"
     >
       <use className={styles.lineDotted} href="#capability-lines" />

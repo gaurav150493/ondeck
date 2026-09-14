@@ -5,10 +5,11 @@ import { ArrowRightIcon, ChevronDownIcon } from "@/common/icons";
 import containerStyles from "@/styles/container.module.scss";
 import styles from "./Header.module.scss";
 import { primaryNav } from "./header.constants";
+import { StickyHeader } from "./StickyHeader";
 
 export function Header() {
   return (
-    <header className={styles.header}>
+    <StickyHeader>
       <div className={`${containerStyles.container} ${styles.inner}`}>
         <Link href="/" className={styles.logo} aria-label="OnDeck Global home">
           <Image
@@ -48,6 +49,6 @@ export function Header() {
           </Button>
         </div>
       </div>
-    </header>
+    </StickyHeader>
   );
 }

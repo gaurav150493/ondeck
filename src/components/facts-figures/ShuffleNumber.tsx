@@ -3,11 +3,18 @@
 import { useEffect, useState } from "react";
 import { useInView } from "@/customHooks/useInView";
 
-const DURATION = 900;
-const TICK = 55;
+const DURATION = 1400;
 
-function scramble(target: string) {
-  return target.replace(/\d/g, () => String(Math.floor(Math.random() * 10)));
+function easeOut(progress: number) {
+  return 1 - Math.pow(1 - progress, 3);
+}
+
+function countTo(value: string, progress: number) {
+  return value.replace(/\d+(?:\.\d+)?/g, (token) => {
+    const target = Number(token);
+    const decimals = token.includes(".") ? token.split(".")[1].length : 0;
+    return (1 + (target - 1) * progress).toFixed(decimals);
+  });
 }
 
 export function ShuffleNumber({ value, className }: { value: string; className?: string }) {
@@ -18,18 +25,25 @@ export function ShuffleNumber({ value, className }: { value: string; className?:
     if (!inView) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
+    let frame = 0;
     const start = performance.now();
-    const timer = window.setInterval(() => {
-      if (performance.now() - start >= DURATION) {
-        window.clearInterval(timer);
-        setDisplay(value);
+
+    const step = (now: number) => {
+      const progress = Math.min(1, (now - start) / DURATION);
+
+      if (progress < 1) {
+        setDisplay(countTo(value, easeOut(progress)));
+        frame = window.requestAnimationFrame(step);
         return;
       }
-      setDisplay(scramble(value));
-    }, TICK);
+
+      setDisplay(value);
+    };
+
+    frame = window.requestAnimationFrame(step);
 
     return () => {
-      window.clearInterval(timer);
+      window.cancelAnimationFrame(frame);
       setDisplay(value);
     };
   }, [inView, value]);

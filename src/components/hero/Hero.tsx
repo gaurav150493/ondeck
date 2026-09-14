@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Button } from "@/common/Button/Button";
-import { ArrowRightIcon, PlayIcon } from "@/common/icons";
+import { ArrowRightIcon } from "@/common/icons";
 import containerStyles from "@/styles/container.module.scss";
 import styles from "./Hero.module.scss";
 
@@ -31,8 +31,8 @@ export function Hero() {
             <Button href="/platform/overview" size="large" icon={<ArrowRightIcon />}>
               Explore Platform
             </Button>
-            <Button href="/watch" variant="hollow" size="large" icon={<PlayIcon />} iconPosition="before">
-              Watch Video
+            <Button href="/contact-us" variant="hollow" size="large" icon={<ArrowRightIcon />}>
+              Contact Us
             </Button>
           </div>
         </div>

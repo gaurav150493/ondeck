@@ -30,3 +30,15 @@
   aspect-ratio: 331 / 208;
   object-fit: contain;
 }
+
+.more {
+  margin-top: 12px;
+  color: v.$muted;
+  font-size: v.$label;
+  line-height: calc(#{v.$label-line} / #{v.$label});
+  text-align: center;
+
+  @include vp.lg-up {
+    margin-top: 16px;
+  }
+}

@@ -22,7 +22,7 @@ export const capabilities: Capability[] = [
   {
     id: "fiat-payments",
     connector: "M494 168 H560",
-    detail: "(Endorphina, 77Gaming, Mascot, Zillion)",
+    detail: "(Visa, Mastercard, Interac, UPI, PIX, Pago, Paypal, Skrill, Neteller, Praxis, Changelly and more)",
     title: "Fiat Payments",
     meta: "30+ integrations",
     href: "/platform/fiat-payments",
@@ -32,7 +32,7 @@ export const capabilities: Capability[] = [
   {
     id: "games-aggregators",
     connector: "M494 255 H560",
-    detail: "(Endorphina, 77Gaming, Mascot, Zillion)",
+    detail: "(SoftSwiss, Groove, Whitecliff, Slotegrator)",
     title: "Games Aggregators",
     meta: "4 integrations",
     href: "/platform/games-aggregators",
@@ -42,7 +42,7 @@ export const capabilities: Capability[] = [
   {
     id: "crypto-payments",
     connector: "M636 80 H895",
-    detail: "(Endorphina, 77Gaming, Mascot, Zillion)",
+    detail: "(Passim Pay, Now Payments, 0xProcessing, Lightening BTC)",
     title: "Crypto Payments",
     meta: "4 integrations",
     href: "/platform/crypto-payments",
@@ -52,7 +52,7 @@ export const capabilities: Capability[] = [
   {
     id: "marketing",
     connector: "M636 163 H895",
-    detail: "(Endorphina, 77Gaming, Mascot, Zillion)",
+    detail: "(Customer.io, Fast Track, Sendgrid, Affnook, Affilka, Partner Matrix and more)",
     title: "Marketing",
     meta: "10+ integrations",
     href: "/platform/marketing",
@@ -62,7 +62,7 @@ export const capabilities: Capability[] = [
   {
     id: "risk-management",
     connector: "M636 245 H895",
-    detail: "(Endorphina, 77Gaming, Mascot, Zillion)",
+    detail: "(SumSub, Usercheck, Fingerprint)",
     title: "Risk Management",
     meta: "3 integrations",
     href: "/platform/risk-management",

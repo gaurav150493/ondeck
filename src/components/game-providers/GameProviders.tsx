@@ -2,7 +2,7 @@ import Image from "next/image";
 import { SectionHeading } from "@/common/SectionHeading/SectionHeading";
 import containerStyles from "@/styles/container.module.scss";
 import styles from "./GameProviders.module.scss";
-import { gameProviders } from "./gameProviders.constants";
+import { gameProviders, moreProviders } from "./gameProviders.constants";
 
 export function GameProviders() {
   return (
@@ -23,6 +23,8 @@ export function GameProviders() {
             </li>
           ))}
         </ul>
+
+        <p className={styles.more}>{moreProviders}</p>
       </div>
     </section>
   );

@@ -17,3 +17,5 @@ export const gameProviders: GameProvider[] = [
   { name: "Booming Games", logo: "/images/providers/booming-games.png" },
   { name: "Microgaming", logo: "/images/providers/microgaming.png" },
 ];
+
+export const moreProviders = "100+ more";

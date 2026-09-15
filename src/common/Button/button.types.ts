@@ -1,6 +1,6 @@
 import type { MouseEventHandler, ReactNode } from "react";
 
-export type ButtonVariant = "filled" | "hollow" | "gradient";
+export type ButtonVariant = "filled" | "hollow" | "gradient" | "offer";
 export type ButtonIconPosition = "before" | "after";
 
 export type ButtonSize = "default" | "large";

@@ -26,6 +26,15 @@
   filter: brightness(1.08);
 }
 
+.offer {
+  background: v.$offer-button;
+  color: v.$white;
+}
+
+.offer:hover {
+  filter: brightness(1.12);
+}
+
 .hollow {
   background: v.$surface;
   border-color: v.$gold;

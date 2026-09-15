@@ -48,6 +48,8 @@
 }
 
 .inner {
+  position: relative;
+  z-index: 2;
   padding-block: 15px 0;
 
   @include vp.md-up {
@@ -59,6 +61,14 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.bannerOffer .copy {
+  gap: 2px;
+}
+
+.bannerOffer .subtitle {
+  margin-top: 8px;
 }
 
 .title {
@@ -79,6 +89,76 @@
   }
 }
 
+.bannerOffer .accent {
+  background: v.$offer-accent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.offerEyebrow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: v.$offer-purple;
+  font-size: 11px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.offerEyebrow svg {
+  width: 14px;
+  height: 14px;
+}
+
+.offerHeadline {
+  margin-top: 4px;
+  background: v.$offer-accent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 38px;
+  font-weight: v.$weight-semibold;
+  line-height: 1;
+
+  @include vp.lg-up {
+    font-size: 55px;
+  }
+}
+
+.offerRule {
+  width: 94px;
+  height: 2px;
+  margin-top: 4px;
+  background: v.$offer-rule;
+}
+
+.confetti {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  transition: opacity 0.4s ease;
+}
+
+.confettiPlaying {
+  opacity: 1;
+}
+
+.confetti video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .confetti {
+    display: none;
+  }
+}
+
 .subtitle {
   color: v.$muted;
   font-size: 14px;
@@ -91,6 +171,8 @@
 }
 
 .action {
+  position: relative;
+  z-index: 2;
   padding: 22px v.$inset-mobile 16px;
 
   @include vp.md-up {

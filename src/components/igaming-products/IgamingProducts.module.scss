@@ -85,14 +85,17 @@
 
 @keyframes deal {
   0% {
-    transform: translate(var(--stack), 0) rotate(var(--tilt)) scale(0.95);
+    z-index: calc(20 + var(--i));
+    transform: translate(var(--stack), 0) rotate(var(--tilt)) scale(1.07);
   }
 
   55% {
-    transform: translate(3%, -5%) rotate(4deg) scale(1.02);
+    z-index: calc(20 + var(--i));
+    transform: translate(3%, -5%) rotate(4deg) scale(1.03);
   }
 
   100% {
+    z-index: calc(20 + var(--i));
     transform: translate(0, 0) rotate(0deg) scale(1);
   }
 }
@@ -102,14 +105,14 @@
     --stack: calc(var(--i) * (-100% - 11px));
     --tilt: calc(var(--i) * -4deg);
 
-    transform: translate(var(--stack), 0) rotate(var(--tilt)) scale(0.95);
+    transform: translate(var(--stack), 0) rotate(var(--tilt)) scale(1.07);
     transform-origin: bottom left;
     will-change: transform;
     z-index: calc(10 - var(--i));
   }
 
   .dealt .card {
-    animation: deal 0.54s cubic-bezier(0.22, 0.72, 0.28, 1) both;
+    animation: deal 0.54s cubic-bezier(0.22, 0.72, 0.28, 1) forwards;
     animation-delay: calc(var(--i) * 110ms);
   }
 }

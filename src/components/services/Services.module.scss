@@ -19,7 +19,7 @@
 
 .item {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 12px;
   padding-block: 8px;
   border-bottom: 1px solid v.$line;
@@ -35,6 +35,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  align-self: flex-start;
   width: 60px;
   height: 60px;
   border: 1px solid v.$blue-deep;
@@ -45,44 +46,32 @@
 
 .body {
   display: flex;
+  flex: 1;
   flex-direction: column;
   min-width: 0;
   margin-top: 10px;
 }
 
 .title {
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   font-size: v.$eyebrow;
   font-weight: v.$weight-semibold;
   line-height: calc(#{v.$eyebrow-line} / #{v.$eyebrow});
-
-  @include vp.lg-up {
-    font-size: v.$label;
-    line-height: calc(#{v.$label-line} / #{v.$label});
-  }
 }
 
 .description {
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   color: v.$muted;
   font-size: 14px;
-  line-height: calc(16.9 / 14);
-
-  @include vp.lg-up {
-    font-size: v.$tiny;
-    line-height: calc(#{v.$tiny-line} / #{v.$tiny});
-  }
+  line-height: calc(20 / 14);
 }
 
 .link {
   color: v.$blue;
+  margin-top: auto;
   font-size: 13px;
   line-height: calc(15 / 13);
   transition: color 0.2s ease;
-
-  @include vp.lg-up {
-    font-size: v.$tiny;
-  }
 }
 
 .link:hover {

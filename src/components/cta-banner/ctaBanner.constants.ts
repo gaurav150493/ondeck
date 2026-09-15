@@ -1,4 +1,4 @@
-export const showOffer = false;
+export const showOffer = true;
 
 export const offer = {
   eyebrow: "Limited time offer",

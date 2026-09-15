@@ -84,17 +84,12 @@
 }
 
 @keyframes deal {
-  0% {
+  from {
     z-index: calc(20 + var(--i));
     transform: translate(var(--stack), 0) rotate(var(--tilt)) scale(1.07);
   }
 
-  55% {
-    z-index: calc(20 + var(--i));
-    transform: translate(3%, -5%) rotate(4deg) scale(1.03);
-  }
-
-  100% {
+  to {
     z-index: calc(20 + var(--i));
     transform: translate(0, 0) rotate(0deg) scale(1);
   }
@@ -107,12 +102,13 @@
 
     transform: translate(var(--stack), 0) rotate(var(--tilt)) scale(1.07);
     transform-origin: bottom left;
+    backface-visibility: hidden;
     will-change: transform;
     z-index: calc(10 - var(--i));
   }
 
   .dealt .card {
-    animation: deal 0.54s cubic-bezier(0.22, 0.72, 0.28, 1) forwards;
+    animation: deal 0.62s cubic-bezier(0.33, 1.22, 0.58, 1) forwards;
     animation-delay: calc(var(--i) * 110ms);
   }
 }

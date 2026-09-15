@@ -47,6 +47,21 @@
   }
 }
 
+.track {
+  --step: 50vh;
+}
+
+.track[data-pin="on"]::after {
+  content: "";
+  display: block;
+  height: calc(var(--steps) * var(--step));
+}
+
+.track[data-pin="on"] .sticky {
+  position: sticky;
+  top: var(--pin-offset, 0px);
+}
+
 .visual {
   position: absolute;
   z-index: -2;
@@ -206,41 +221,51 @@
   }
 }
 
-.item:hover .iconWrap {
-  border-color: v.$cyan-glow;
-  box-shadow:
-    0 0 0 1px rgba(v.$blue-glow, 0.5),
-    0 0 14px 2px rgba(v.$blue-glow, 0.75),
-    0 0 26px 6px rgba(v.$cyan-glow, 0.35);
-}
+@for $i from 0 through 5 {
+  .track[data-active="#{$i}"] .item[data-index="#{$i}"] .iconWrap {
+    border-color: v.$cyan-glow;
+    box-shadow:
+      0 0 0 1px rgba(v.$blue-glow, 0.5),
+      0 0 14px 2px rgba(v.$blue-glow, 0.75),
+      0 0 26px 6px rgba(v.$cyan-glow, 0.35);
+  }
 
-.item:hover .detail {
-  max-height: 8em;
-  margin-top: 2px;
-  opacity: 1;
+  .track[data-active="#{$i}"] .item[data-index="#{$i}"] .detail {
+    max-height: 8em;
+    margin-top: 2px;
+    opacity: 1;
+  }
 }
 
 @include vp.lg-up {
-  .right:has(.item:hover) .line {
+  .track[data-active] .line {
     opacity: 0.3;
   }
 
   @for $i from 0 through 5 {
-    .right:has(.item[data-index="#{$i}"]:hover) svg.line[data-index="#{$i}"] {
+    .track[data-active="#{$i}"] svg.line[data-index="#{$i}"] {
       opacity: 1;
     }
 
-    .right:has(.item[data-index="#{$i}"]:hover) svg.line[data-index="#{$i}"] .lineDotted {
+    .track[data-active="#{$i}"] svg.line[data-index="#{$i}"] .lineDotted {
       opacity: 0;
     }
 
-    .right:has(.item[data-index="#{$i}"]:hover) svg.line[data-index="#{$i}"] .lineSolid {
+    .track[data-active="#{$i}"] svg.line[data-index="#{$i}"] .lineSolid {
       opacity: 1;
     }
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .track::after {
+    display: none;
+  }
+
+  .track .sticky {
+    position: static;
+  }
+
   .line,
   .lineDotted,
   .lineSolid,

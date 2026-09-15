@@ -63,6 +63,21 @@
   gap: 8px;
 }
 
+.bannerOffer {
+  @include vp.md-up {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.bannerOffer .inner {
+  @include vp.md-up {
+    width: 100%;
+    padding-top: 0;
+  }
+}
+
 .bannerOffer .copy {
   gap: 2px;
 }
@@ -145,6 +160,10 @@
 
 .confettiPlaying {
   opacity: 1;
+}
+
+.confettiDone {
+  opacity: 0;
 }
 
 .confetti video {

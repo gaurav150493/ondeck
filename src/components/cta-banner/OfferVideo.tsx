@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useInView } from "@/customHooks/useInView";
 import styles from "./CtaBanner.module.scss";
 
 export function OfferVideo({ src }: { src: string }) {
   const { ref, inView } = useInView<HTMLDivElement>("0px 0px -20% 0px");
   const video = useRef<HTMLVideoElement>(null);
+  const [played, setPlayed] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -23,13 +24,18 @@ export function OfferVideo({ src }: { src: string }) {
     void node.play().catch(() => undefined);
   }, [inView]);
 
+  const state = played ? styles.confettiDone : inView ? styles.confettiPlaying : "";
+
   return (
-    <div
-      ref={ref}
-      className={`${styles.confetti} ${inView ? styles.confettiPlaying : ""}`}
-      aria-hidden="true"
-    >
-      <video ref={video} src={src} muted playsInline preload="auto" />
+    <div ref={ref} className={`${styles.confetti} ${state}`} aria-hidden="true">
+      <video
+        ref={video}
+        src={src}
+        muted
+        playsInline
+        preload="auto"
+        onEnded={() => setPlayed(true)}
+      />
     </div>
   );
 }

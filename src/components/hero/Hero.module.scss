@@ -15,23 +15,62 @@
   }
 }
 
-.background {
+.art {
+  position: relative;
   order: -1;
+  overflow: hidden;
   width: 100%;
-  height: auto;
   margin-bottom: 24px;
   aspect-ratio: 480 / 420;
-  object-fit: cover;
-  object-position: center;
 
   @include vp.lg-up {
     position: absolute;
     inset: 0;
     z-index: -1;
-    height: 100%;
     margin-bottom: 0;
     aspect-ratio: auto;
+  }
+}
+
+.background,
+.chip {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+
+  @include vp.lg-up {
     object-position: center right;
+  }
+}
+
+@keyframes chipLand {
+  0% {
+    transform: scale(var(--chip-zoom)) rotate(0deg);
+  }
+
+  58% {
+    transform: scale(1) rotate(0deg);
+    animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  100% {
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+.chip {
+  --chip-zoom: 3.5;
+
+  transform-origin: var(--chip-x, 53.945%) var(--chip-y, 41.769%);
+  animation: chipLand 2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chip {
+    animation: none;
   }
 }
 

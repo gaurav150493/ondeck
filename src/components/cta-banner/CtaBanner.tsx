@@ -20,9 +20,9 @@ export function CtaBanner() {
           width={1717}
           height={916}
         />
-      </div>
 
-      {showOffer && <OfferVideo src={offer.video} />}
+        {showOffer && <OfferVideo src={offer.video} />}
+      </div>
 
       <div className={`${containerStyles.container} ${styles.inner}`}>
         <div className={styles.copy}>

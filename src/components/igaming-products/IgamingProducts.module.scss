@@ -1,5 +1,17 @@
+@use "sass:math";
 @use "variables" as v;
 @use "viewPortMixins" as vp;
+
+$deck-gap: 11px;
+
+@mixin deck-slots($columns) {
+  @for $i from 0 through 5 {
+    .card:nth-child(#{$i + 1}) {
+      --col: #{$i % $columns};
+      --row: #{math.floor(math.div($i, $columns))};
+    }
+  }
+}
 
 .grid {
   display: grid;
@@ -86,7 +98,7 @@
 @keyframes deal {
   from {
     z-index: calc(20 + var(--i));
-    transform: translate(var(--stack), 0) rotate(var(--tilt)) scale(1.07);
+    transform: translate(var(--stack-x), var(--stack-y)) rotate(var(--tilt)) scale(1.07);
   }
 
   to {
@@ -95,22 +107,31 @@
   }
 }
 
+.card {
+  --tilt: calc(var(--i) * -4deg);
+  --stack-x: calc(var(--col) * (-100% - #{$deck-gap}));
+  --stack-y: calc(var(--row) * (-100% - #{$deck-gap}));
+
+  transform: translate(var(--stack-x), var(--stack-y)) rotate(var(--tilt)) scale(1.07);
+  transform-origin: bottom left;
+  backface-visibility: hidden;
+  will-change: transform;
+  z-index: calc(10 - var(--i));
+}
+
+@include deck-slots(2);
+
+@include vp.md-up {
+  @include deck-slots(3);
+}
+
 @include vp.xl-up {
-  .card {
-    --stack: calc(var(--i) * (-100% - 11px));
-    --tilt: calc(var(--i) * -4deg);
+  @include deck-slots(6);
+}
 
-    transform: translate(var(--stack), 0) rotate(var(--tilt)) scale(1.07);
-    transform-origin: bottom left;
-    backface-visibility: hidden;
-    will-change: transform;
-    z-index: calc(10 - var(--i));
-  }
-
-  .dealt .card {
-    animation: deal 0.62s cubic-bezier(0.33, 1.22, 0.58, 1) forwards;
-    animation-delay: calc(var(--i) * 110ms);
-  }
+.dealt .card {
+  animation: deal 0.62s cubic-bezier(0.33, 1.22, 0.58, 1) forwards;
+  animation-delay: calc(var(--i) * 110ms);
 }
 
 @media (prefers-reduced-motion: reduce) {

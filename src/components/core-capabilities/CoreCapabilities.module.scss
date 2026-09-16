@@ -221,19 +221,27 @@
   }
 }
 
+@mixin node-lit {
+  border-color: v.$cyan-glow;
+  box-shadow:
+    0 0 0 1px rgba(v.$blue-glow, 0.5),
+    0 0 14px 2px rgba(v.$blue-glow, 0.75),
+    0 0 26px 6px rgba(v.$cyan-glow, 0.35);
+}
+
+@mixin detail-open {
+  max-height: 8em;
+  margin-top: 2px;
+  opacity: 1;
+}
+
 @for $i from 0 through 5 {
   .track[data-active="#{$i}"] .item[data-index="#{$i}"] .iconWrap {
-    border-color: v.$cyan-glow;
-    box-shadow:
-      0 0 0 1px rgba(v.$blue-glow, 0.5),
-      0 0 14px 2px rgba(v.$blue-glow, 0.75),
-      0 0 26px 6px rgba(v.$cyan-glow, 0.35);
+    @include node-lit;
   }
 
   .track[data-active="#{$i}"] .item[data-index="#{$i}"] .detail {
-    max-height: 8em;
-    margin-top: 2px;
-    opacity: 1;
+    @include detail-open;
   }
 }
 
@@ -252,6 +260,32 @@
     }
 
     .track[data-active="#{$i}"] svg.line[data-index="#{$i}"] .lineSolid {
+      opacity: 1;
+    }
+  }
+
+  .track:not([data-active]) .item:hover .iconWrap {
+    @include node-lit;
+  }
+
+  .track:not([data-active]) .item:hover .detail {
+    @include detail-open;
+  }
+
+  .track:not([data-active]) .right:has(.item:hover) .line {
+    opacity: 0.3;
+  }
+
+  @for $i from 0 through 5 {
+    .track:not([data-active]) .right:has(.item[data-index="#{$i}"]:hover) svg.line[data-index="#{$i}"] {
+      opacity: 1;
+    }
+
+    .track:not([data-active]) .right:has(.item[data-index="#{$i}"]:hover) svg.line[data-index="#{$i}"] .lineDotted {
+      opacity: 0;
+    }
+
+    .track:not([data-active]) .right:has(.item[data-index="#{$i}"]:hover) svg.line[data-index="#{$i}"] .lineSolid {
       opacity: 1;
     }
   }

@@ -13,16 +13,22 @@ export function CapabilityPin({ count, children }: { count: number; children: Re
     const pane = node?.firstElementChild as HTMLElement | null;
     if (!node || !pane) return;
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      node.dataset.pin = "off";
-      return;
-    }
+    const wide = window.matchMedia("(min-width: 1024px)");
+    const still = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     let frame = 0;
     let current = -1;
     let offset = -1;
     let seen = false;
-    let collapsed = false;
+    let finished = false;
+
+    const release = () => {
+      node.dataset.pin = "off";
+      node.style.removeProperty("--pin-offset");
+      node.removeAttribute("data-active");
+      current = -1;
+      offset = -1;
+    };
 
     const setIndex = (next: number) => {
       if (next === current) return;
@@ -32,17 +38,19 @@ export function CapabilityPin({ count, children }: { count: number; children: Re
 
     const measure = () => {
       frame = 0;
-      if (collapsed) return;
+      if (finished) return;
+
+      if (still.matches || !wide.matches) {
+        release();
+        return;
+      }
 
       const viewport = window.innerHeight;
       const paneHeight = pane.offsetHeight;
       const rect = node.getBoundingClientRect();
 
       if (paneHeight > viewport - fitMargin) {
-        node.dataset.pin = "off";
-        const progress =
-          (viewport * 0.72 - rect.top) / (paneHeight + viewport * 0.3);
-        setIndex(Math.min(count - 1, Math.max(0, Math.floor(progress * count))));
+        release();
         return;
       }
 
@@ -64,10 +72,9 @@ export function CapabilityPin({ count, children }: { count: number; children: Re
       if (index >= count - 1) seen = true;
       if (!seen || rect.bottom > 0) return;
 
-      collapsed = true;
+      finished = true;
       const from = window.scrollY;
-      node.dataset.pin = "off";
-      node.style.removeProperty("--pin-offset");
+      release();
       window.scrollTo(0, Math.max(0, from - runway));
     };
 
@@ -79,11 +86,13 @@ export function CapabilityPin({ count, children }: { count: number; children: Re
     measure();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
+    wide.addEventListener("change", onScroll);
 
     return () => {
       if (frame) window.cancelAnimationFrame(frame);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+      wide.removeEventListener("change", onScroll);
     };
   }, [count]);
 
@@ -91,7 +100,6 @@ export function CapabilityPin({ count, children }: { count: number; children: Re
     <div
       ref={ref}
       className={styles.track}
-      data-active={0}
       data-pin="off"
       style={{ "--steps": count } as CSSProperties}
     >

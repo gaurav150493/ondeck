@@ -1,10 +1,10 @@
 import { SectionHeading } from "@/common/SectionHeading/SectionHeading";
 import containerStyles from "@/styles/container.module.scss";
 import styles from "./FactsFigures.module.scss";
-import { facts } from "./factsFigures.constants";
+import { facts as defaultFacts, type Fact } from "./factsFigures.constants";
 import { ShuffleNumber } from "./ShuffleNumber";
 
-export function FactsFigures() {
+export function FactsFigures({ facts = defaultFacts }: { facts?: Fact[] }) {
   return (
     <section className={containerStyles.section} aria-labelledby="facts-figures">
       <div className={containerStyles.container}>

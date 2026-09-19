@@ -3,7 +3,7 @@ import type { StackCard } from "./modernStack.types";
 export const stackCards: StackCard[] = [
   {
     title: "Launch in one week",
-    image: "/images/stack/launch.png",
+    image: "/images/stack/launch.webp",
     tone: "blue",
     points: [
       "Live in 7 days when no new integrations are required — you brand it, we deploy it.",
@@ -14,7 +14,7 @@ export const stackCards: StackCard[] = [
   },
   {
     title: "Move off legacy",
-    image: "/images/stack/legacy.png",
+    image: "/images/stack/legacy.webp",
     tone: "violet",
     points: [
       "Player database, wallet balances, and bonus ported with segment continuity.",

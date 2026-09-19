@@ -73,12 +73,8 @@ Run all three: `npx tsc --noEmit`, `npm run lint`, `npm run build`.
   hero and capabilities art rendered at @2x); vectors in `public/icons/**`. The icon module
   `src/common/icons/index.tsx` is **generated** from those SVGs with `currentColor` swapped in
   — regenerate it rather than hand-editing.
-- Game-provider tiles are sliced from the design's single flattened strip, because the file
-  has no per-logo nodes. Replace them if real brand assets arrive.
 - Desktop geometry and the full type scale come from the **REST API**, not screenshots.
   Section gaps are a uniform **60px**; container is 1160 with 60px insets.
 - **Mobile is unmeasured** beyond container width (447) and inset (17).
 - The font is **Inter**, confirmed in Figma.
-- **Mobile has no navigation in the design** — the header carries only a logo and one button,
-  so the five nav sections are unreachable below 1024px. Needs a designer decision.
 - **Nav and footer link to routes that do not exist yet** (`/platform/*`, `/products/*`, …).

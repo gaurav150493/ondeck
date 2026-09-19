@@ -14,7 +14,7 @@ export function Header() {
         <Link href="/" className={styles.logo} aria-label="OnDeck Global home">
           <Image
             className={styles.logoMark}
-            src="/images/logo-header.png"
+            src="/images/logo-header.webp"
             alt="OnDeck Global"
             width={227}
             height={46}
@@ -25,10 +25,10 @@ export function Header() {
         <nav className={styles.nav} aria-label="Primary">
           {primaryNav.map((group) => (
             <div key={group.label} className={styles.group}>
-              <Link href={group.href} className={styles.groupLabel}>
+              <button type="button" className={styles.groupLabel} aria-expanded="false">
                 {group.label}
                 <ChevronDownIcon />
-              </Link>
+              </button>
               <div className={styles.dropdown}>
                 {group.items.map((item) => (
                   <Link key={item.href} href={item.href} className={styles.dropdownLink}>
@@ -44,7 +44,7 @@ export function Header() {
           <Link href="/login" className={styles.login}>
             Login
           </Link>
-          <Button href="/contact" icon={<ArrowRightIcon />}>
+          <Button href="/contact-us" icon={<ArrowRightIcon />}>
             Get in Touch
           </Button>
         </div>

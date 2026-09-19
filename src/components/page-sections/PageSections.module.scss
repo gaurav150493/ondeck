@@ -1,0 +1,651 @@
+@use "variables" as v;
+@use "viewPortMixins" as vp;
+
+.section {
+  padding-block: 8px;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.eyebrow {
+  color: v.$cyan;
+  font-size: 12px;
+  line-height: calc(14.5 / 12);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+
+  @include vp.lg-up {
+    font-size: v.$eyebrow;
+    line-height: calc(#{v.$eyebrow-line} / #{v.$eyebrow});
+  }
+}
+
+.title {
+  font-size: 22px;
+  font-weight: v.$weight-regular;
+  line-height: calc(26.6 / 22);
+
+  @include vp.lg-up {
+    font-size: v.$h2;
+    line-height: calc(#{v.$h2-line} / #{v.$h2});
+  }
+}
+
+.titleAccent {
+  background: v.$gold-accent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.sectionIntro {
+  max-width: 76ch;
+  margin-top: 14px;
+  font-size: 14px;
+  line-height: calc(24 / 14);
+
+  @include vp.lg-up {
+    font-size: v.$body;
+    line-height: calc(#{v.$body-line} / #{v.$body});
+  }
+}
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  padding-block: 99px 32px;
+
+  @include vp.lg-up {
+    min-height: 478px;
+    padding-block: 158px 60px;
+  }
+}
+
+.heroArt {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  overflow: hidden;
+
+  @include vp.lg-up {
+    left: 30%;
+  }
+}
+
+.heroArt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+
+  @include vp.lg-up {
+    background: linear-gradient(90deg, v.$black 0%, rgba(0, 0, 0, 0.55) 45%, rgba(0, 0, 0, 0.35) 100%);
+  }
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center right;
+}
+
+.heroPanel {
+  @include vp.lg-up {
+    max-width: 520px;
+    padding: 28px 30px 30px 0;
+  }
+}
+
+.heroTitle {
+  margin-top: 8px;
+  font-size: 32px;
+  font-weight: v.$weight-semibold;
+  line-height: 1.2;
+
+  @include vp.lg-up {
+    font-size: 50px;
+    line-height: calc(60 / 50);
+  }
+}
+
+.heroAccent {
+  display: block;
+  background: v.$gold-hero;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.heroSubhead {
+  max-width: 62ch;
+  margin-top: 16px;
+  font-size: 14px;
+  line-height: calc(24 / 14);
+
+  @include vp.lg-up {
+    font-size: v.$body;
+    line-height: calc(#{v.$body-line} / #{v.$body});
+  }
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+
+  @include vp.lg-up {
+    gap: 20px;
+  }
+}
+
+.band {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  min-height: 260px;
+  padding-block: 28px;
+
+  @include vp.lg-up {
+    min-height: 356px;
+    padding-block: 60px;
+  }
+}
+
+.bandImage {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bandPanel {
+  display: grid;
+  gap: 18px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+
+  @include vp.lg-up {
+    grid-template-columns: 323px minmax(0, 1fr);
+    gap: 50px;
+    align-items: start;
+  }
+}
+
+.bandHead {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bandBody {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 13px;
+  line-height: calc(20 / 13);
+
+  @include vp.lg-up {
+    font-size: 14px;
+    line-height: calc(20 / 14);
+  }
+}
+
+.group {
+  margin-top: 26px;
+}
+
+.groupLabel {
+  margin-bottom: 14px;
+  color: v.$gold-pale;
+  font-size: 14px;
+  font-weight: v.$weight-semibold;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.cards {
+  display: grid;
+  gap: 4px 10px;
+  list-style: none;
+
+  @include vp.md-up {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include vp.lg-up {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.card {
+  display: flex;
+  gap: 5px;
+  align-items: flex-start;
+  padding: 8px 4px;
+}
+
+.cardMark {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border: 1px solid v.$blue-deep;
+  border-radius: 50%;
+  color: v.$white;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.cardMark svg {
+  width: 28px;
+  height: 28px;
+}
+
+.card:hover .cardMark {
+  border-color: v.$cyan-line;
+  color: v.$gold-pale;
+}
+
+.cardBody {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 15px;
+}
+
+.cardLink {
+  color: v.$blue;
+  font-size: 12px;
+  line-height: calc(15 / 12);
+}
+
+.cardTitle {
+  font-size: 14px;
+  font-weight: v.$weight-semibold;
+  line-height: calc(18 / 14);
+}
+
+.cardText {
+  font-size: 12px;
+  line-height: calc(17 / 12);
+}
+
+.steps {
+  display: grid;
+  gap: 18px;
+  margin-top: 26px;
+  list-style: none;
+
+  @include vp.md-up {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include vp.xl-up {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px;
+  border: 1px solid v.$field-border;
+  transition: border-color 0.2s ease;
+}
+
+.step:hover {
+  border-color: v.$line-gold;
+}
+
+.stepIcon {
+  display: inline-flex;
+  color: v.$white;
+}
+
+.stepIcon svg {
+  width: 40px;
+  height: 40px;
+}
+
+.stepTitle {
+  font-size: 14px;
+  font-weight: v.$weight-regular;
+  line-height: calc(20 / 14);
+}
+
+.stepText {
+  font-size: 12px;
+  line-height: calc(20 / 12);
+}
+
+.srOnly {
+  position: absolute;
+  overflow: hidden;
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  white-space: nowrap;
+}
+
+.tableScroll {
+  margin-top: 26px;
+
+  @include vp.lg-up {
+    overflow-x: auto;
+    border: 1px solid v.$line-strong;
+    border-radius: v.$card-radius;
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.table thead {
+  display: none;
+}
+
+.table tbody tr {
+  display: block;
+  margin-bottom: 10px;
+  overflow: hidden;
+  border: 1px solid v.$line;
+  border-radius: v.$card-radius;
+  background-color: v.$surface-card;
+}
+
+.table tbody th {
+  display: block;
+  padding: 10px 14px;
+  border-bottom: 1px solid v.$line;
+  background-color: v.$surface-row;
+  color: v.$gold-pale;
+  font-size: 14px;
+  font-weight: v.$weight-semibold;
+  line-height: calc(20 / 14);
+}
+
+.table tbody td {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  padding: 9px 14px;
+  color: v.$white;
+  font-size: 14px;
+  line-height: calc(20 / 14);
+}
+
+.table tbody td + td {
+  border-top: 1px solid v.$line;
+}
+
+.table tbody td::before {
+  content: attr(data-column);
+  flex-shrink: 0;
+  color: v.$muted;
+  font-weight: v.$weight-semibold;
+}
+
+@include vp.lg-up {
+  .table thead {
+    display: table-header-group;
+  }
+
+  .table tbody tr {
+    display: table-row;
+    margin-bottom: 0;
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+  }
+
+  .table tbody tr:nth-child(even) {
+    background-color: v.$surface-row;
+  }
+
+  .table tbody tr + tr th,
+  .table tbody tr + tr td {
+    border-top: 1px solid v.$line;
+  }
+
+  .table thead th,
+  .table tbody th,
+  .table tbody td {
+    display: table-cell;
+    padding: 13px 20px;
+    vertical-align: top;
+    font-size: 15px;
+    line-height: calc(22 / 15);
+  }
+
+  .table thead th {
+    border-bottom: 1px solid v.$line-strong;
+    background: v.$gold-accent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: v.$weight-semibold;
+    white-space: nowrap;
+  }
+
+  .table tbody th {
+    position: sticky;
+    left: 0;
+    width: 254px;
+    border-bottom: 0;
+    background-color: v.$black;
+    color: v.$white;
+  }
+
+  .table tbody tr:nth-child(even) th {
+    background-image: linear-gradient(v.$surface-row, v.$surface-row);
+  }
+
+  .table tbody td + td,
+  .table tbody th + td,
+  .table thead th + th {
+    border-left: 1px solid v.$line;
+  }
+
+  .table tbody td::before {
+    content: none;
+  }
+}
+
+.faq {
+  display: grid;
+  gap: 10px;
+  margin-top: 26px;
+  align-items: start;
+
+  @include vp.lg-up {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+.faqItem {
+  overflow: hidden;
+  border: 1px solid v.$blue-deep;
+  border-radius: v.$card-radius;
+  background-color: v.$surface-card;
+  transition: border-color 0.2s ease;
+}
+
+.faqItem:hover,
+.faqItem[open] {
+  border-color: v.$line-gold;
+}
+
+.faqQuestion {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: v.$weight-regular;
+  line-height: calc(20 / 13);
+  list-style: none;
+
+  @include vp.lg-up {
+    font-size: 14px;
+    line-height: calc(20 / 14);
+  }
+}
+
+.faqQuestion::-webkit-details-marker {
+  display: none;
+}
+
+.faqMark {
+  position: relative;
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+}
+
+.faqMark::before,
+.faqMark::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 1.5px;
+  background-color: v.$gold-mark;
+  transform: translate(-50%, -50%);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.faqMark::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.faqItem[open] .faqMark::after {
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.faqAnswer {
+  padding: 0 12px 12px;
+  color: v.$muted;
+  font-size: 13px;
+  line-height: calc(21 / 13);
+
+  @include vp.lg-up {
+    font-size: 14px;
+    line-height: calc(24 / 14);
+  }
+}
+
+@include vp.reduced-motion {
+  .card,
+  .faqItem,
+  .faqMark::before,
+  .faqMark::after {
+    transition: none;
+  }
+}
+
+.sectionOutro {
+  max-width: 76ch;
+  margin-top: 20px;
+  color: v.$muted;
+  font-size: 14px;
+  line-height: calc(24 / 14);
+
+  @include vp.lg-up {
+    font-size: v.$body;
+    line-height: calc(#{v.$body-line} / #{v.$body});
+  }
+}
+
+.split {
+  width: 100%;
+  padding-block: 8px;
+}
+
+.splitInner {
+  display: grid;
+  gap: 24px;
+
+  @include vp.lg-up {
+    grid-template-columns: 40% minmax(0, 1fr);
+    gap: 40px;
+    align-items: center;
+  }
+}
+
+.splitArt {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+
+  @include vp.lg-up {
+    height: 424px;
+  }
+}
+
+.splitBody {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-inline: v.$inset-mobile;
+
+  @include vp.lg-up {
+    max-width: 689px;
+    padding-inline: 0;
+    padding-right: v.$inset;
+  }
+}
+
+.points {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  list-style: none;
+}
+
+.point {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 13px;
+  line-height: calc(20 / 13);
+
+  @include vp.lg-up {
+    font-size: 14px;
+    line-height: calc(20 / 14);
+  }
+}
+
+.pointMark {
+  display: inline-flex;
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: v.$white;
+}
+
+.pointTitle {
+  font-weight: v.$weight-semibold;
+}

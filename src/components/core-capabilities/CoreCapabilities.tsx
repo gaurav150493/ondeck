@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Button } from "@/common/Button/Button";
 import { ArrowRightIcon } from "@/common/icons";
 import { SectionHeading } from "@/common/SectionHeading/SectionHeading";
@@ -12,22 +11,14 @@ import type { Capability, CapabilitySide } from "./coreCapabilities.types";
 
 function CapabilityItem({ capability, index }: { capability: Capability; index: number }) {
   return (
-    <Link
-      href={capability.href}
-      data-node={capability.id}
-      data-index={index}
-      className={styles.item}
-    >
+    <div data-node={capability.id} data-index={index} className={styles.item}>
       <span className={styles.iconWrap}>{capability.icon}</span>
       <span className={styles.text}>
         <span className={styles.title}>{capability.title}</span>
         <span className={styles.meta}>{capability.meta}</span>
         <span className={styles.detail}>{capability.detail}</span>
       </span>
-      <span className={styles.arrow}>
-        <ArrowRightIcon />
-      </span>
-    </Link>
+    </div>
   );
 }
 
@@ -82,7 +73,7 @@ export function CoreCapabilities() {
               <div className={styles.visual}>
                 <Image
                   className={styles.image}
-                  src="/images/capabilities.png"
+                  src="/images/capabilities.webp"
                   alt=""
                   width={652}
                   height={348}

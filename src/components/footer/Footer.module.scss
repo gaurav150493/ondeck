@@ -12,8 +12,8 @@
   gap: 36px;
 
   @include vp.lg-up {
-    grid-template-columns: minmax(240px, 300px) 1fr;
-    gap: 56px;
+    grid-template-columns: minmax(200px, 250px) 1fr;
+    gap: 40px;
   }
 }
 
@@ -44,8 +44,13 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 28px 20px;
 
-  @include vp.lg-up {
+  @include vp.md-up {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @include vp.lg-up {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 20px 16px;
   }
 }
 
@@ -57,6 +62,7 @@
   text-transform: uppercase;
 
   @include vp.lg-up {
+    margin-bottom: 8px;
     font-size: v.$small;
     line-height: 1.21;
   }
@@ -68,7 +74,13 @@
   color: v.$muted;
   font-size: v.$small;
   line-height: calc(25 / 12);
+  overflow-wrap: break-word;
   transition: color 0.2s ease;
+
+  @include vp.lg-up {
+    padding-block: 2px;
+    line-height: calc(20 / 12);
+  }
 }
 
 .columnLink:hover {

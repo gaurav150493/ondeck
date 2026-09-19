@@ -4,11 +4,21 @@ import containerStyles from "@/styles/container.module.scss";
 import styles from "./GameProviders.module.scss";
 import { gameProviders, moreProviders } from "./gameProviders.constants";
 
-export function GameProviders() {
+export function GameProviders({
+  id = "game-providers",
+  eyebrow = "Our game providers",
+  title,
+  highlight,
+}: {
+  id?: string;
+  eyebrow?: string;
+  title?: string;
+  highlight?: string;
+} = {}) {
   return (
-    <section className={containerStyles.section} aria-labelledby="game-providers">
+    <section className={containerStyles.section} aria-labelledby={id}>
       <div className={containerStyles.container}>
-        <SectionHeading id="game-providers" eyebrow="Our game providers" />
+        <SectionHeading id={id} eyebrow={eyebrow} title={title} highlight={highlight} />
 
         <ul className={styles.grid}>
           {gameProviders.map((provider) => (

@@ -4,6 +4,7 @@ import { JsonLd } from "@/common/JsonLd/JsonLd";
 import { siteConfig } from "@/config/site.config";
 import { Footer } from "@/components/footer/Footer";
 import { Header } from "@/components/header/Header";
+import { RouteProgress } from "@/common/RouteProgress/RouteProgress";
 import "@/styles/globals.scss";
 
 const inter = Inter({
@@ -56,6 +57,7 @@ export default function RootLayout({
     <html lang="en" className={inter.variable}>
       <body>
         <JsonLd />
+        <RouteProgress />
         <Header />
         {children}
         <Footer />

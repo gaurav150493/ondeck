@@ -7,7 +7,7 @@ export function JsonLd() {
       "@id": `${siteConfig.url}/#organization`,
       name: siteConfig.name,
       url: siteConfig.url,
-      logo: `${siteConfig.url}/images/logo-header.png`,
+      logo: `${siteConfig.url}/images/logo-header.webp`,
       sameAs: [
         siteConfig.social.linkedin,
         siteConfig.social.facebook,

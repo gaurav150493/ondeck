@@ -53,7 +53,7 @@ export function HeroChip() {
     <Image
       ref={ref}
       className={styles.chip}
-      src="/images/hero-chip.png"
+      src="/images/hero-chip.webp"
       alt=""
       width={bannerWidth}
       height={bannerHeight}

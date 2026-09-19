@@ -3,7 +3,7 @@ import Link from "next/link";
 import { siteConfig } from "@/config/site.config";
 import containerStyles from "@/styles/container.module.scss";
 import styles from "./Footer.module.scss";
-import { footerAbout, footerNav, legalLinks } from "./footer.constants";
+import { footerAbout, footerContact, footerNav, legalLinks } from "./footer.constants";
 import { socialLinks } from "./socialLinks.constants";
 
 export function Footer() {
@@ -12,7 +12,7 @@ export function Footer() {
       <div className={containerStyles.container}>
         <div className={styles.inner}>
           <div className={styles.brand}>
-            <Image src="/images/logo-footer.png" alt={siteConfig.name} width={149} height={46} />
+            <Image src="/images/logo-footer.webp" alt={siteConfig.name} width={149} height={46} />
             <p className={styles.about}>{footerAbout}</p>
             <div className={styles.socials}>
               {socialLinks.map((social) => (
@@ -41,7 +41,7 @@ export function Footer() {
           </div>
 
           <div className={styles.columns}>
-            {footerNav.map((column) => (
+            {[...footerNav, footerContact].map((column) => (
               <nav key={column.label} aria-label={column.label}>
                 <h3 className={styles.columnTitle}>{column.label}</h3>
                 {column.items.map((item) =>

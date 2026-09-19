@@ -1,0 +1,33 @@
+@use "variables" as v;
+@use "viewPortMixins" as vp;
+
+.bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 60;
+  width: 0;
+  height: 2px;
+  background: v.$gold-button;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.bar[data-state="loading"] {
+  width: 92%;
+  opacity: 1;
+  transition: width 8s cubic-bezier(0.1, 0.6, 0.2, 1);
+}
+
+.bar[data-state="done"] {
+  width: 100%;
+  opacity: 0;
+  transition: width 0.18s ease-out, opacity 0.3s ease 0.12s;
+}
+
+@include vp.reduced-motion {
+  .bar[data-state="loading"],
+  .bar[data-state="done"] {
+    transition: none;
+  }
+}

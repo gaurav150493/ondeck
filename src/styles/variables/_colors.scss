@@ -4,9 +4,13 @@ $muted: #d2d2d2;
 
 $gold: #b57a27;
 $gold-pale: #ffec98;
+$gold-mark: #e7b457;
 $gold-heading: linear-gradient(180deg, #ffec98 0%, #b57a27 100%);
 $gold-button: linear-gradient(180deg, #f7e98a 0%, #fdbc39 50%, #cd993e 100%);
 $gold-border: linear-gradient(180deg, #f7ea8b 0%, #e6b154 100%);
+$gold-rule: linear-gradient(90deg, #ffec98 0%, #b57a27 55%, rgba(181, 122, 39, 0) 100%);
+$gold-accent: linear-gradient(180deg, #f7e98a 0%, #fdbc39 50%, #cd993e 100%);
+$gold-hero: linear-gradient(180deg, #f7e98a 0%, #c19f4e 50%, #8a5612 100%);
 
 $cyan: #00b9ff;
 $blue: #329efb;
@@ -18,11 +22,16 @@ $cyan-line: #44c2fe;
 
 $surface: rgba(0, 0, 0, 0.7);
 $line: rgba(255, 255, 255, 0.1);
+$line-strong: rgba(255, 255, 255, 0.22);
+$surface-row: rgba(255, 255, 255, 0.03);
+$surface-card: rgba(255, 255, 255, 0.04);
 $line-gold: rgba(181, 122, 39, 0.55);
 
 $violet: #8b5cf6;
 
-$offer-purple: #9e4ecc;
-$offer-accent: linear-gradient(90deg, #16d0f6 0%, #c063f6 100%);
-$offer-button: linear-gradient(90deg, #00b9ff 0%, #9e4ecc 100%);
-$offer-rule: linear-gradient(90deg, #16d0f6 0%, #c063f6 55%, #09080d 100%);
+$form-surface: rgba(0, 3, 11, 0.8);
+$form-border: #004e81;
+$field-surface: #0a1825;
+$field-border: rgba(91, 102, 122, 0.5);
+$field-placeholder: #8d97a9;
+$field-error: #dd2020;

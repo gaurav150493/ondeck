@@ -69,15 +69,22 @@
   align-items: center;
   gap: 5px;
   padding-block: 10px;
+  border: 0;
+  background: none;
   color: v.$white;
+  font: inherit;
   font-size: v.$label;
   font-weight: v.$weight-semibold;
   line-height: calc(#{v.$label-line} / #{v.$label});
+  cursor: default;
   transition: color 0.2s ease;
 }
 
 .group:hover .groupLabel,
 .group:focus-within .groupLabel {
+  background: none;
+  border: 0;
+  cursor: default;
   color: v.$white;
 }
 
@@ -102,6 +109,12 @@
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+}
+
+.header[data-menu="dismissed"] .group .dropdown {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
 }
 
 .dropdownLink {

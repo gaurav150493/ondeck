@@ -104,18 +104,11 @@
   }
 }
 
-.bannerOffer .accent {
-  background: v.$offer-accent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
 .offerEyebrow {
   display: flex;
   align-items: center;
   gap: 6px;
-  color: v.$offer-purple;
+  color: v.$gold-pale;
   font-size: 11px;
   line-height: 1;
   text-transform: uppercase;
@@ -128,7 +121,7 @@
 
 .offerHeadline {
   margin-top: 4px;
-  background: v.$offer-accent;
+  background: v.$gold-heading;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -145,7 +138,7 @@
   width: 94px;
   height: 2px;
   margin-top: 4px;
-  background: v.$offer-rule;
+  background: v.$gold-rule;
 }
 
 .confetti {

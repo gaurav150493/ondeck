@@ -212,15 +212,6 @@
   line-height: calc(16 / 13);
 }
 
-.arrow {
-  flex-shrink: 0;
-  color: v.$muted;
-
-  @include vp.lg-up {
-    display: none;
-  }
-}
-
 @mixin node-lit {
   border-color: v.$cyan-glow;
   box-shadow:

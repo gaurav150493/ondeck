@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { Button } from "@/common/Button/Button";
 import { ArrowRightIcon, GiftIcon } from "@/common/icons";
+import { offer, showOffer } from "@/config/offer.config";
 import containerStyles from "@/styles/container.module.scss";
 import styles from "./CtaBanner.module.scss";
-import { offer, showOffer } from "./ctaBanner.constants";
 import { OfferVideo } from "./OfferVideo";
 
 export function CtaBanner() {
@@ -15,7 +15,7 @@ export function CtaBanner() {
       <div className={styles.media}>
         <Image
           className={styles.image}
-          src="/images/cta.png"
+          src="/images/cta.webp"
           alt=""
           width={1717}
           height={916}
@@ -46,11 +46,7 @@ export function CtaBanner() {
       </div>
 
       <div className={styles.action}>
-        <Button
-          href="/contact-us/"
-          variant={showOffer ? "offer" : "filled"}
-          icon={<ArrowRightIcon />}
-        >
+        <Button href="/contact-us" variant="filled" icon={<ArrowRightIcon />}>
           Get in Touch
         </Button>
       </div>

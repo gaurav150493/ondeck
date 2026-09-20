@@ -34,7 +34,7 @@ export const services: Service[] = [
     title: "Prediction Market",
     description:
       "Prediction markets require speed, accuracy, and reliability to deliver a seamless user experience. We build high-performance platforms that enable real-time market updates, secure transactions, and intuitive interfaces, ensuring users can engage with confidence while accessing the latest market insights.",
-    href: "/services/prediction-markets",
+    href: "/products/prediction-markets",
     icon: <ChartIcon />,
   },
   {

@@ -49,7 +49,12 @@ export default function ContactPage() {
                   <li key={channel.id} className={styles.channel}>
                     <span className={styles.channelIcon}>{channel.icon}</span>
                     <span className={styles.channelLabel}>{channel.label}</span>
-                    <a className={styles.channelValue} href={channel.href}>
+                    <a
+                      className={styles.channelValue}
+                      href={channel.href}
+                      target={channel.href.startsWith("http") ? "_blank" : undefined}
+                      rel={channel.href.startsWith("http") ? "noreferrer" : undefined}
+                    >
                       {channel.value}
                       <ArrowRightIcon size={16} />
                     </a>

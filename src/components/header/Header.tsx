@@ -5,6 +5,7 @@ import { ArrowRightIcon, ChevronDownIcon } from "@/common/icons";
 import containerStyles from "@/styles/container.module.scss";
 import styles from "./Header.module.scss";
 import { primaryNav } from "./header.constants";
+import { MobileNav } from "./MobileNav";
 import { StickyHeader } from "./StickyHeader";
 
 export function Header() {
@@ -41,12 +42,10 @@ export function Header() {
         </nav>
 
         <div className={styles.actions}>
-          <Link href="/login" className={styles.login}>
-            Login
-          </Link>
           <Button href="/contact-us" icon={<ArrowRightIcon />}>
             Get in Touch
           </Button>
+          <MobileNav />
         </div>
       </div>
     </StickyHeader>

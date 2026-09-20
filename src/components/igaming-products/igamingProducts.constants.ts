@@ -5,7 +5,7 @@ export const productCards: ProductCard[] = [
     title: "Casino",
     description: "100+ configurable game providers.",
     image: "/images/products/casino.webp",
-    href: "/products/casino",
+    href: "/solutions/white-label",
   },
   {
     title: "Sportsbook",

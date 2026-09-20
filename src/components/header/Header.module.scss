@@ -42,8 +42,12 @@
 }
 
 .logoMark {
-  width: 190px;
+  width: 132px;
   height: auto;
+
+  @include vp.sm-up {
+    width: 156px;
+  }
 
   @include vp.lg-up {
     width: 227px;
@@ -134,7 +138,11 @@
 .actions {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 10px;
+
+  @include vp.lg-up {
+    gap: 18px;
+  }
 }
 
 .login {
@@ -151,4 +159,131 @@
 
 .login:hover {
   color: v.$white;
+}
+
+.menuToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid v.$line-gold;
+  border-radius: v.$radius-sm;
+  background: none;
+  color: v.$white;
+  cursor: pointer;
+
+  @include vp.lg-up {
+    display: none;
+  }
+}
+
+.menuBars {
+  position: relative;
+  display: block;
+  width: 16px;
+  height: 1.5px;
+  background-color: currentcolor;
+  transition: background-color 0.2s ease;
+}
+
+.menuBars::before,
+.menuBars::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 16px;
+  height: 1.5px;
+  background-color: currentcolor;
+  transition: transform 0.2s ease;
+}
+
+.menuBars::before {
+  top: -5px;
+}
+
+.menuBars::after {
+  top: 5px;
+}
+
+.menuBars[data-open="true"] {
+  background-color: transparent;
+}
+
+.menuBars[data-open="true"]::before {
+  transform: translateY(5px) rotate(45deg);
+}
+
+.menuBars[data-open="true"]::after {
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+.menuPanel {
+  position: fixed;
+  top: 75px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 40;
+  overflow-y: auto;
+  background-color: v.$black;
+  opacity: 0;
+  transition: opacity 0.22s ease;
+
+  @include vp.lg-up {
+    display: none;
+  }
+}
+
+.menuPanel[data-open="true"] {
+  opacity: 1;
+}
+
+.menuInner {
+  display: grid;
+  gap: 26px;
+  padding: 26px v.$inset-mobile 48px;
+}
+
+.menuGroupLabel {
+  margin-bottom: 12px;
+  color: v.$cyan;
+  font-size: 12px;
+  font-weight: v.$weight-semibold;
+  line-height: 1.2;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.menuList {
+  display: grid;
+  gap: 2px;
+}
+
+.menuLink {
+  display: block;
+  padding-block: 9px;
+  border-bottom: 1px solid v.$line;
+  font-size: 16px;
+  line-height: calc(22 / 16);
+}
+
+.menuLink:active {
+  color: v.$gold-pale;
+}
+
+.menuContact {
+  color: v.$gold-pale;
+  font-size: 14px;
+  line-height: calc(20 / 14);
+}
+
+@include vp.reduced-motion {
+  .menuPanel,
+  .menuBars,
+  .menuBars::before,
+  .menuBars::after {
+    transition: none;
+  }
 }

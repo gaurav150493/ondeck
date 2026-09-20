@@ -163,8 +163,14 @@
 }
 
 .channelLabel {
-  font-size: 14px;
-  line-height: calc(20 / 14);
+  font-size: 15px;
+  font-weight: v.$weight-semibold;
+  line-height: calc(20 / 15);
+
+  @include vp.lg-up {
+    font-size: 16px;
+    line-height: calc(22 / 16);
+  }
 }
 
 .channelValue {
@@ -172,9 +178,14 @@
   gap: 4px;
   align-items: center;
   color: v.$white;
-  font-size: 11px;
-  line-height: calc(20 / 11);
-  word-break: break-all;
+  font-size: 13px;
+  line-height: calc(20 / 13);
+  word-break: break-word;
+
+  @include vp.lg-up {
+    font-size: 14px;
+    line-height: calc(22 / 14);
+  }
 }
 
 .channelValue svg {

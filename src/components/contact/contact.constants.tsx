@@ -62,8 +62,8 @@ export const directContact = {
   subtitle: "Prefer to reach out another way? Use the options below.",
   channels: [
     { id: "email", icon: <EnvelopeIcon />, label: "Email", value: "sales@ondeckglobal.com", href: "mailto:sales@ondeckglobal.com" },
-    { id: "whatsapp", icon: <WhatsAppIcon />, label: "Email", value: "sales@ondeckglobal.com", href: "mailto:sales@ondeckglobal.com" },
-    { id: "telegram", icon: <TelegramIcon />, label: "Email", value: "sales@ondeckglobal.com", href: "mailto:sales@ondeckglobal.com" },
+    { id: "whatsapp", icon: <WhatsAppIcon />, label: "WhatsApp", value: "+44 7520 659717", href: "https://wa.me/447520659717" },
+    { id: "telegram", icon: <TelegramIcon />, label: "Telegram", value: "@HARMANS007", href: "https://t.me/HARMANS007" },
   ],
 };
 

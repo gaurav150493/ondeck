@@ -57,11 +57,13 @@
 .hero {
   position: relative;
   isolation: isolate;
+  display: flex;
+  align-items: center;
   padding-block: 99px 32px;
 
   @include vp.lg-up {
-    min-height: 478px;
-    padding-block: 158px 60px;
+    min-height: 577px;
+    padding-block: 97px 0;
   }
 }
 
@@ -99,8 +101,8 @@
 
 .heroPanel {
   @include vp.lg-up {
-    max-width: 520px;
-    padding: 28px 30px 30px 0;
+    max-width: 540px;
+    padding-right: 30px;
   }
 }
 
@@ -256,8 +258,9 @@
 }
 
 .card:hover .cardMark {
-  border-color: v.$cyan-line;
-  color: v.$gold-pale;
+  border-color: v.$cyan-glow;
+  box-shadow: 0 0 0 1px rgba(v.$blue-glow, 0.5), 0 0 14px 2px rgba(v.$blue-glow, 0.75),
+    0 0 26px 6px rgba(v.$cyan-glow, 0.35);
 }
 
 .cardBody {
@@ -310,12 +313,17 @@
 }
 
 .step:hover {
-  border-color: v.$line-gold;
+  border-color: v.$cyan-line;
+}
+
+.step:hover .stepIcon {
+  color: v.$gold-pale;
 }
 
 .stepIcon {
   display: inline-flex;
   color: v.$white;
+  transition: color 0.2s ease;
 }
 
 .stepIcon svg {
@@ -455,8 +463,21 @@
     color: v.$white;
   }
 
+  .table tbody tr,
+  .table tbody th {
+    transition: background-color 0.15s ease;
+  }
+
   .table tbody tr:nth-child(even) th {
-    background-image: linear-gradient(v.$surface-row, v.$surface-row);
+    background-color: v.$row-even;
+  }
+
+  .table tbody tr:hover {
+    background-color: v.$surface-hover;
+  }
+
+  .table tbody tr:hover th {
+    background-color: v.$row-hover;
   }
 
   .table tbody td + td,
@@ -548,6 +569,7 @@
 
 .faqAnswer {
   padding: 0 12px 12px;
+  margin: 0;
   color: v.$muted;
   font-size: 13px;
   line-height: calc(21 / 13);
@@ -560,6 +582,9 @@
 
 @include vp.reduced-motion {
   .card,
+  .cardMark,
+  .stepIcon,
+  .step,
   .faqItem,
   .faqMark::before,
   .faqMark::after {

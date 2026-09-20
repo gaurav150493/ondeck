@@ -40,8 +40,21 @@
   height: 60px;
   border: 1px solid v.$blue-deep;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.03);
+  background: v.$surface-row;
   color: v.$white;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.item:hover .iconWrap {
+  border-color: v.$cyan-glow;
+  box-shadow: 0 0 0 1px rgba(v.$blue-glow, 0.5), 0 0 14px 2px rgba(v.$blue-glow, 0.75),
+    0 0 26px 6px rgba(v.$cyan-glow, 0.35);
+}
+
+@include vp.reduced-motion {
+  .iconWrap {
+    transition: none;
+  }
 }
 
 .body {

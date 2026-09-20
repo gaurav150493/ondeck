@@ -8,6 +8,7 @@ const bannerWidth = 1280;
 const bannerHeight = 650;
 const chipCentreX = 690.5;
 const chipCentreY = 271.5;
+const anchors: Record<string, number> = { left: 0, top: 0, center: 0.5, right: 1, bottom: 1 };
 
 export function HeroChip() {
   const ref = useRef<HTMLImageElement>(null);
@@ -26,7 +27,8 @@ export function HeroChip() {
 
       const scale = Math.max(width / bannerWidth, height / bannerHeight);
       const [alignX = "50%", alignY = "50%"] = getComputedStyle(node).objectPosition.split(" ");
-      const ratio = (value: string) => (Number.parseFloat(value) || 0) / 100;
+      const ratio = (value: string) =>
+        anchors[value] ?? (Number.parseFloat(value) || 0) / 100;
 
       const left = (width - bannerWidth * scale) * ratio(alignX);
       const top = (height - bannerHeight * scale) * ratio(alignY);

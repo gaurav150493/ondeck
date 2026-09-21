@@ -674,3 +674,19 @@
 .pointTitle {
   font-weight: v.$weight-semibold;
 }
+
+.prose {
+  display: flex;
+  max-width: 88ch;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+  color: v.$muted;
+  font-size: 14px;
+  line-height: calc(24 / 14);
+
+  @include vp.lg-up {
+    font-size: v.$body;
+    line-height: calc(#{v.$body-line} / #{v.$body});
+  }
+}

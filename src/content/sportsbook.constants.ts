@@ -1,7 +1,7 @@
 import type { CardGridContent, FaqContent, PageHeroContent, ProseBandContent } from "@/components/page-sections/pageSections.types";
+import type { Fact } from "@/components/facts-figures/factsFigures.constants";
 
 export const meta = {
-  alternates: { canonical: "/products/sportsbook" },
   title: "Sportsbook Platform | Pre-Match, In-Play and Cash-Out",
   description: "A sportsbook on the same wallet, bonus engine and back office as your casino. Pre-match and in-play across global sports, with cash-out and one set of numbers.",
 };
@@ -70,6 +70,12 @@ export const faq: FaqContent = {
   ],
 };
 
+export const facts: Fact[] = [
+  { value: "30", label: "Projects", note: "Launched" },
+  { value: "15", label: "Operators", note: "Worldwide" },
+  { value: "99.99%", label: "Uptime", note: "Guaranteed" },
+  { value: "24/7", label: "Technical", note: "Support" },
+];
 
 export const closing = {
   title: "Want to see it running?",

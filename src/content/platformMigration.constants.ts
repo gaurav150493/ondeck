@@ -1,7 +1,7 @@
 import type { CardGridContent, FaqContent, PageHeroContent, ProseBandContent, StepListContent } from "@/components/page-sections/pageSections.types";
+import type { Fact } from "@/components/facts-figures/factsFigures.constants";
 
 export const meta = {
-  alternates: { canonical: "/solutions/platform-migration" },
   title: "iGaming Platform Migration | Move Off Legacy Without Losing Players",
   description: "Port your player database, wallet balances, bonus state and affiliate attribution to a modern stack. Keep your provider mix and PSP contracts. Parallel run before cutover.",
 };
@@ -109,6 +109,12 @@ export const faq: FaqContent = {
   ],
 };
 
+export const facts: Fact[] = [
+  { value: "30", label: "Projects", note: "Launched" },
+  { value: "15", label: "Operators", note: "Worldwide" },
+  { value: "99.99%", label: "Uptime", note: "Guaranteed" },
+  { value: "24/7", label: "Technical", note: "Support" },
+];
 
 export const closing = {
   title: "Still running on a platform you'd rather not be on?",

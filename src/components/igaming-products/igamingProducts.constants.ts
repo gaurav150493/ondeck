@@ -23,18 +23,18 @@ export const productCards: ProductCard[] = [
     title: "Payments",
     description: "34+ payment methods live including crypto.",
     image: "/images/products/payments.webp",
-    href: "/products/payments",
+    href: "/platform/payments",
   },
   {
     title: "Player Engagement",
     description: "Promo engine, tournaments, VIP & CRM tools.",
     image: "/images/products/player-engagement.webp",
-    href: "/products/player-engagement",
+    href: "/platform/promo-engine",
   },
   {
     title: "Fraud, Risk & KYC",
     description: "Four-layer defense for total protection.",
     image: "/images/products/fraud-risk-kyc.webp",
-    href: "/products/fraud-risk-kyc",
+    href: "/platform/fraud-risk-kyc",
   },
 ];

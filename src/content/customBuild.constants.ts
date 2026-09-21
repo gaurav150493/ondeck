@@ -1,7 +1,7 @@
 import type { CardGridContent, FaqContent, PageHeroContent, ProseBandContent, StepListContent } from "@/components/page-sections/pageSections.types";
+import type { Fact } from "@/components/facts-figures/factsFigures.constants";
 
 export const meta = {
-  alternates: { canonical: "/solutions/custom-build" },
   title: "Custom iGaming Platform Development | Build on a Proven Core",
   description: "A product designed around your model, built on a platform core that already handles wallet, compliance, payments and providers. Bespoke where it matters, proven where it does not.",
 };
@@ -86,6 +86,12 @@ export const faq: FaqContent = {
   ],
 };
 
+export const facts: Fact[] = [
+  { value: "30", label: "Projects", note: "Launched" },
+  { value: "15", label: "Operators", note: "Worldwide" },
+  { value: "99.99%", label: "Uptime", note: "Guaranteed" },
+  { value: "24/7", label: "Technical", note: "Support" },
+];
 
 export const closing = {
   title: "Have something specific in mind?",

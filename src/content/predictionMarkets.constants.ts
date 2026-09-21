@@ -1,7 +1,6 @@
 import type { CardGridContent, CompareTableContent, FaqContent, PageHeroContent, ProseBandContent } from "@/components/page-sections/pageSections.types";
 
 export const meta = {
-  alternates: { canonical: "/products/prediction-markets" },
   title: "Prediction Markets Platform | Event Contracts for Operators",
   description: "An exchange-style vertical where players trade event contracts against each other and you earn a fee on volume instead of carrying risk on the outcome. On our roadmap now.",
 };

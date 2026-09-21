@@ -1,7 +1,7 @@
 import type { CardGridContent, FaqContent, PageHeroContent, ProseBandContent, StepListContent } from "@/components/page-sections/pageSections.types";
+import type { Fact } from "@/components/facts-figures/factsFigures.constants";
 
 export const meta = {
-  alternates: { canonical: "/solutions/turnkey" },
   title: "Turnkey iGaming Platform | Your Licence, Your Contracts, Our Tech",
   description: "Run a full casino and sportsbook on infrastructure you do not have to build. You keep your licence, your provider deals and your PSP rates. Multi-brand, API-first, live in weeks.",
 };
@@ -86,6 +86,12 @@ export const faq: FaqContent = {
   ],
 };
 
+export const facts: Fact[] = [
+  { value: "30", label: "Projects", note: "Launched" },
+  { value: "15", label: "Operators", note: "Worldwide" },
+  { value: "99.99%", label: "Uptime", note: "Guaranteed" },
+  { value: "24/7", label: "Technical", note: "Support" },
+];
 
 export const closing = {
   title: "Own the relationships. Skip the build.",

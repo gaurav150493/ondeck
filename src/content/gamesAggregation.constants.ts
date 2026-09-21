@@ -1,7 +1,7 @@
 import type { CardGridContent, FaqContent, PageHeroContent, ProseBandContent } from "@/components/page-sections/pageSections.types";
+import type { Fact } from "@/components/facts-figures/factsFigures.constants";
 
 export const meta = {
-  alternates: { canonical: "/products/games-aggregation" },
   title: "Casino Games Aggregation | 100+ Providers, One Integration",
   description: "Slots, live casino, crash and table games from 100+ providers through a single integration. One wallet, one back office, one reporting schema. Add a studio in an afternoon.",
 };
@@ -81,7 +81,9 @@ export const merchandising: CardGridContent = {
 export const distribution: ProseBandContent = {
   eyebrow: "For Platforms And Operators",
   title: "Taking the catalogue via API.",
-  paragraphs: [],
+  paragraphs: [
+    "{{{{{Display the names of top 20-30 game providers here}}}}",
+  ],
 };
 
 export const faq: FaqContent = {
@@ -96,6 +98,12 @@ export const faq: FaqContent = {
   ],
 };
 
+export const facts: Fact[] = [
+  { value: "30", label: "Projects", note: "Launched" },
+  { value: "15", label: "Operators", note: "Worldwide" },
+  { value: "99.99%", label: "Uptime", note: "Guaranteed" },
+  { value: "24/7", label: "Technical", note: "Support" },
+];
 
 export const closing = {
   title: "Want the full studio list?",

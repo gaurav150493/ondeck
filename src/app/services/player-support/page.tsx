@@ -1,28 +1,24 @@
 import type { Metadata } from "next";
 import { CardGrid } from "@/components/page-sections/CardGrid";
-import { CompareTable } from "@/components/page-sections/CompareTable";
 import { FaqAccordion } from "@/components/page-sections/FaqAccordion";
 import { PageHero } from "@/components/page-sections/PageHero";
 import { ProseBand } from "@/components/page-sections/ProseBand";
 import { ProseSection } from "@/components/page-sections/ProseSection";
-import { StepList } from "@/components/page-sections/StepList";
 import { CtaBanner } from "@/components/cta-banner/CtaBanner";
 import { FactsFigures } from "@/components/facts-figures/FactsFigures";
-import { economics, faq, hero, included, launchPath, meta, whoFor } from "@/content/turnkey.constants";
-import { solutionsCompare } from "@/content/solutionsCompare.constants";
+import { coverage, different, faq, hero, meta, quality, scope } from "@/content/playerSupport.constants";
 import containerStyles from "@/styles/container.module.scss";
 
 export const metadata: Metadata = meta;
 
-export default function TurnkeyPage() {
+export default function PlayerSupportPage() {
   return (
     <main className={containerStyles.page}>
       <PageHero {...hero} />
-      <ProseBand {...whoFor} />
-      <CardGrid {...included} />
-      <StepList {...launchPath} />
-      <ProseSection {...economics} />
-      <CompareTable {...solutionsCompare} id="compare" />
+      <ProseBand {...different} />
+      <CardGrid {...scope} />
+      <ProseSection {...coverage} />
+      <CardGrid {...quality} />
       <FactsFigures />
       <FaqAccordion {...faq} />
       <CtaBanner />

@@ -2,26 +2,20 @@ import type { Metadata } from "next";
 import { CardGrid } from "@/components/page-sections/CardGrid";
 import { FaqAccordion } from "@/components/page-sections/FaqAccordion";
 import { PageHero } from "@/components/page-sections/PageHero";
-import { ProseBand } from "@/components/page-sections/ProseBand";
-import { ProseSection } from "@/components/page-sections/ProseSection";
-import { SplitSection } from "@/components/page-sections/SplitSection";
-import { StepList } from "@/components/page-sections/StepList";
 import { CtaBanner } from "@/components/cta-banner/CtaBanner";
 import { FactsFigures } from "@/components/facts-figures/FactsFigures";
-import { contracts, faq, hero, inventory, meta, operations, path, problem } from "@/content/platformMigration.constants";
+import { costAbuse, faq, hero, mechanics, meta, targeting } from "@/content/promoEngine.constants";
 import containerStyles from "@/styles/container.module.scss";
 
 export const metadata: Metadata = meta;
 
-export default function PlatformMigrationPage() {
+export default function PromoEnginePage() {
   return (
     <main className={containerStyles.page}>
       <PageHero {...hero} />
-      <ProseBand {...problem} />
-      <CardGrid {...inventory} id="inventory" />
-      <StepList {...path} />
-      <SplitSection {...contracts} />
-      <ProseSection {...operations} />
+      <CardGrid {...mechanics} />
+      <CardGrid {...targeting} />
+      <CardGrid {...costAbuse} />
       <FactsFigures />
       <FaqAccordion {...faq} />
       <CtaBanner />

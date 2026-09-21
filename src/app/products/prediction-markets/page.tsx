@@ -4,6 +4,7 @@ import { FaqAccordion } from "@/components/page-sections/FaqAccordion";
 import { PageHero } from "@/components/page-sections/PageHero";
 import { SplitSection } from "@/components/page-sections/SplitSection";
 import { ProseBand } from "@/components/page-sections/ProseBand";
+import { ProseSection } from "@/components/page-sections/ProseSection";
 import { CtaBanner } from "@/components/cta-banner/CtaBanner";
 import { differs, faq, hero, meta, operatorView, regulatory, status, why } from "@/content/predictionMarkets.constants";
 import containerStyles from "@/styles/container.module.scss";
@@ -17,8 +18,8 @@ export default function PredictionMarketsPage() {
       <ProseBand {...why} />
       <CompareTable {...differs} id="differs" />
       <SplitSection {...operatorView} />
-      <ProseBand {...regulatory} />
-      <ProseBand {...status} />
+      <ProseSection {...regulatory} />
+      <ProseSection {...status} />
       <FaqAccordion {...faq} />
       <CtaBanner />
     </main>

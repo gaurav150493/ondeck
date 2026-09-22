@@ -22,28 +22,36 @@ export function BlogArticle({ post }: { post: BlogPost }) {
 
   return (
     <main className={containerStyles.page}>
-      <article className={styles.article}>
-        <div className={containerStyles.container}>
-          <p className={styles.eyebrow}>Industry news</p>
-          <h1 className={styles.heading}>{post.heading}</h1>
-          <p className={styles.standfirst}>{post.standfirst}</p>
-          <p className={styles.byline}>
-            <time dateTime={post.publishedAt}>
-              {dateFormatter.format(new Date(post.publishedAt))}
-            </time>
-            <span aria-hidden="true">·</span>
-            <span>{post.readingMinutes} minute read</span>
-          </p>
+      <article>
+        <header className={styles.hero}>
+          <div className={styles.heroArt}>
+            <Image
+              className={styles.heroImage}
+              src={post.image}
+              alt=""
+              width={554}
+              height={742}
+              priority
+            />
+          </div>
 
-          <Image
-            className={styles.cover}
-            src={post.image}
-            alt=""
-            width={554}
-            height={742}
-            priority
-          />
+          <div className={`${containerStyles.container} ${styles.heroInner}`}>
+            <p className={styles.eyebrow}>Industry news</p>
+            <h1 className={styles.heading}>{post.heading}</h1>
+            <p className={styles.standfirst}>{post.standfirst}</p>
+            <p className={styles.byline}>
+              <span className={styles.author}>{post.author}</span>
+              <span aria-hidden="true">·</span>
+              <time dateTime={post.publishedAt}>
+                {dateFormatter.format(new Date(post.publishedAt))}
+              </time>
+              <span aria-hidden="true">·</span>
+              <span>{post.readingMinutes} minute read</span>
+            </p>
+          </div>
+        </header>
 
+        <div className={`${containerStyles.container} ${styles.layout}`}>
           <div className={styles.body}>
             {post.lead.map((paragraph) => (
               <p key={paragraph} className={styles.paragraph}>
@@ -52,7 +60,7 @@ export function BlogArticle({ post }: { post: BlogPost }) {
             ))}
 
             {post.sections.map((section) => (
-              <section key={section.heading} className={styles.section}>
+              <section key={section.heading} className={styles.section} id={slugify(section.heading)}>
                 <h2 className={styles.sectionHeading}>{section.heading}</h2>
                 {section.paragraphs.map((paragraph) => (
                   <p key={paragraph} className={styles.paragraph}>
@@ -77,7 +85,7 @@ export function BlogArticle({ post }: { post: BlogPost }) {
                 <h2 className={styles.sectionHeading}>Frequently asked questions</h2>
                 <dl className={styles.faq}>
                   {post.faq.map((item) => (
-                    <div key={item.question}>
+                    <div key={item.question} className={styles.faqItem}>
                       <dt className={styles.question}>{item.question}</dt>
                       <dd className={styles.answer}>{item.answer}</dd>
                     </div>
@@ -87,29 +95,62 @@ export function BlogArticle({ post }: { post: BlogPost }) {
             ) : null}
           </div>
 
-          {related.length > 0 ? (
-            <aside className={styles.related}>
-              <h2 className={styles.relatedTitle}>Related</h2>
-              <ul className={styles.relatedList}>
-                {related.map((href) => (
-                  <li key={href}>
-                    <Link href={href} className={styles.relatedLink}>
-                      {navLabels.get(href)}
-                    </Link>
+          <aside className={styles.aside}>
+            <div className={styles.asideInner}>
+              <h2 className={styles.asideTitle}>In this article</h2>
+              <ul className={styles.contents}>
+                {post.sections.map((section) => (
+                  <li key={section.heading}>
+                    <a className={styles.contentsLink} href={`#${slugify(section.heading)}`}>
+                      {section.heading}
+                    </a>
                   </li>
                 ))}
               </ul>
-            </aside>
-          ) : null}
 
-          <aside className={styles.cta}>
+              {related.length > 0 ? (
+                <>
+                  <h2 className={styles.asideTitle}>Related</h2>
+                  <ul className={styles.related}>
+                    {related.map((href) => (
+                      <li key={href}>
+                        <Link href={href} className={styles.relatedLink}>
+                          {navLabels.get(href)}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              ) : null}
+            </div>
+          </aside>
+        </div>
+
+        <section className={styles.cta}>
+          <div className={styles.ctaArt}>
+            <Image
+              className={styles.ctaImage}
+              src="/images/cta.webp"
+              alt=""
+              width={1717}
+              height={916}
+            />
+          </div>
+          <div className={`${containerStyles.container} ${styles.ctaInner}`}>
             <p className={styles.ctaBody}>{post.cta.body}</p>
             <Button href="/contact-us" icon={<ArrowRightIcon />}>
               {post.cta.label}
             </Button>
-          </aside>
-        </div>
+          </div>
+        </section>
       </article>
     </main>
   );
+}
+
+function slugify(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
 }

@@ -8,6 +8,7 @@ export const post: BlogPost = {
   seoTitle: "Prediction Markets vs Sportsbooks: What Operators Must Know",
   description: "How prediction markets differ from sportsbooks in pricing, risk and revenue, where the legal fight stands in late 2026, and what operators should consider before adding one.",
   image: "/images/news/prediction-markets-vs-sportsbooks.webp",
+  author: "Ellen Tilly",
   publishedAt: "2026-08-20",
   readingMinutes: 5,
   lead: [

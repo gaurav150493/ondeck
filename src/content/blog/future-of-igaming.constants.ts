@@ -8,6 +8,7 @@ export const post: BlogPost = {
   seoTitle: "The Future of iGaming: 6 Forces Reshaping the Industry",
   description: "Tax rises, fragmented regulation, prediction markets and consolidation are reshaping iGaming faster than any technology trend. What operators should plan for now.",
   image: "/images/news/future-of-igaming.webp",
+  author: "Ellen Tilly",
   publishedAt: "2026-09-15",
   readingMinutes: 8,
   lead: [

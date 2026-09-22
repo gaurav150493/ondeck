@@ -8,6 +8,7 @@ export const post: BlogPost = {
   seoTitle: "How to Choose an iGaming Platform Provider: 12 Questions",
   description: "Twelve questions to ask any iGaming platform provider before you sign, covering costs, data ownership, exit terms, compliance and what happens when something breaks.",
   image: "/images/news/how-to-choose-igaming-platform-provider.webp",
+  author: "Ellen Tilly",
   publishedAt: "2026-09-04",
   readingMinutes: 6,
   lead: [

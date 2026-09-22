@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { SectionHeading } from "@/common/SectionHeading/SectionHeading";
+import { NewsCarousel } from "./NewsCarousel";
 import { posts } from "@/content/blog/posts.constants";
 import containerStyles from "@/styles/container.module.scss";
 import styles from "./IndustryNews.module.scss";
@@ -22,8 +23,8 @@ export function IndustryNews() {
         />
       </div>
 
-      <div className={styles.rail}>
-        <ul className={`${containerStyles.container} ${styles.track}`}>
+      <div className={containerStyles.container}>
+        <NewsCarousel>
           {posts.map((post) => (
             <li key={post.slug} className={styles.item}>
               <Link href={`/blog/${post.slug}`} className={styles.card}>
@@ -45,7 +46,7 @@ export function IndustryNews() {
               </Link>
             </li>
           ))}
-        </ul>
+        </NewsCarousel>
       </div>
     </section>
   );

@@ -1,12 +1,42 @@
 @use "variables" as v;
 @use "viewPortMixins" as vp;
 
-.article {
-  padding-block: 99px 40px;
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  padding-block: 99px 32px;
 
   @include vp.lg-up {
-    padding-block: 158px 60px;
+    min-height: 460px;
+    padding-block: 130px 48px;
   }
+}
+
+.heroArt {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.heroArt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.82);
+
+  @include vp.lg-up {
+    background: linear-gradient(90deg, v.$black 0%, rgba(0, 0, 0, 0.72) 55%, rgba(0, 0, 0, 0.5) 100%);
+  }
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .eyebrow {
@@ -19,21 +49,21 @@
 }
 
 .heading {
-  max-width: 22ch;
+  max-width: 20ch;
   margin-top: 10px;
   font-size: 30px;
   font-weight: v.$weight-semibold;
   line-height: 1.18;
 
   @include vp.lg-up {
-    max-width: 24ch;
+    max-width: 22ch;
     font-size: 46px;
     line-height: calc(56 / 46);
   }
 }
 
 .standfirst {
-  max-width: 68ch;
+  max-width: 62ch;
   margin-top: 16px;
   font-size: 15px;
   line-height: calc(25 / 15);
@@ -46,33 +76,38 @@
 
 .byline {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
-  margin-top: 14px;
+  margin-top: 16px;
   color: v.$muted;
   font-size: 13px;
   line-height: 1.4;
 }
 
-.cover {
-  width: 100%;
-  height: 220px;
-  margin-top: 26px;
-  border-radius: v.$card-radius;
-  object-fit: cover;
-  object-position: center;
+.author {
+  color: v.$gold-pale;
+  font-weight: v.$weight-semibold;
+}
+
+.layout {
+  display: grid;
+  gap: 32px;
+  padding-block: 8px;
 
   @include vp.lg-up {
-    height: 340px;
+    grid-template-columns: minmax(0, 1fr) 260px;
+    gap: 56px;
+    align-items: start;
   }
 }
 
 .body {
-  max-width: 76ch;
-  margin-top: 30px;
+  min-width: 0;
 }
 
 .section {
   margin-top: 30px;
+  scroll-margin-top: 110px;
 }
 
 .sectionHeading {
@@ -138,12 +173,11 @@
   font-weight: v.$weight-semibold;
 }
 
-.faq {
-  margin-top: 14px;
+.faqItem + .faqItem {
+  margin-top: 16px;
 }
 
 .question {
-  margin-top: 16px;
   font-size: 15px;
   font-weight: v.$weight-semibold;
   line-height: calc(22 / 15);
@@ -157,34 +191,67 @@
   line-height: calc(24 / 14);
 }
 
-.related {
-  max-width: 76ch;
-  margin-top: 40px;
-  padding-top: 24px;
-  border-top: 1px solid v.$line;
+.aside {
+  display: none;
+
+  @include vp.lg-up {
+    display: block;
+  }
 }
 
-.relatedTitle {
+.asideInner {
+  position: sticky;
+  top: 110px;
+  padding: 18px;
+  border: 1px solid v.$field-border;
+  border-radius: v.$card-radius;
+  background-color: v.$surface-card;
+}
+
+.asideTitle {
   color: v.$cyan;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: v.$weight-semibold;
   letter-spacing: 0.8px;
   text-transform: uppercase;
 }
 
-.relatedList {
+.asideTitle + .asideTitle {
+  margin-top: 22px;
+}
+
+.contents {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.contentsLink {
+  display: block;
+  color: v.$muted;
+  font-size: 13px;
+  line-height: calc(18 / 13);
+  transition: color 0.2s ease;
+}
+
+.contentsLink:hover {
+  color: v.$gold-pale;
+}
+
+.related {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
   margin-top: 12px;
 }
 
 .relatedLink {
   display: inline-flex;
-  padding: 7px 12px;
+  padding: 6px 10px;
   border: 1px solid v.$field-border;
   border-radius: v.$radius-sm;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.3;
   transition: border-color 0.2s ease, color 0.2s ease;
 }
@@ -195,26 +262,60 @@
 }
 
 .cta {
+  position: relative;
+  isolation: isolate;
   display: flex;
-  max-width: 76ch;
+  align-items: center;
+  min-height: 220px;
+  margin-top: 20px;
+  padding-block: 32px;
+
+  @include vp.md-up {
+    min-height: 260px;
+  }
+}
+
+.ctaArt {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.ctaArt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.55);
+}
+
+.ctaImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ctaInner {
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px;
-  margin-top: 32px;
-  padding: 20px;
-  border: 1px solid v.$field-border;
-  border-radius: v.$card-radius;
-  background-color: v.$surface-card;
+  gap: 18px;
 }
 
 .ctaBody {
-  color: v.$muted;
+  max-width: 68ch;
   font-size: 14px;
   line-height: calc(24 / 14);
+
+  @include vp.lg-up {
+    font-size: v.$body;
+    line-height: calc(26 / 16);
+  }
 }
 
 @include vp.reduced-motion {
-  .relatedLink {
+  .relatedLink,
+  .contentsLink {
     transition: none;
   }
 }

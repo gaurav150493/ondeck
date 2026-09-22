@@ -8,6 +8,7 @@ export const post: BlogPost = {
   seoTitle: "How Much Does It Cost to Start an Online Casino in 2027?",
   description: "Licensing, platform, games, payments, compliance and marketing costs broken down, with current ranges, and the first-year cash need most budgets miss.",
   image: "/images/news/cost-to-start-online-casino.webp",
+  author: "Ellen Tilly",
   publishedAt: "2026-09-10",
   readingMinutes: 6,
   lead: [

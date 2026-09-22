@@ -22,6 +22,7 @@ export interface BlogPost {
   seoTitle: string;
   description: string;
   image: string;
+  author: string;
   publishedAt: string;
   readingMinutes: number;
   lead: string[];

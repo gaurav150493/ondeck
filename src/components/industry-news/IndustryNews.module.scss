@@ -1,52 +1,89 @@
 @use "variables" as v;
 @use "viewPortMixins" as vp;
 
-.rail {
+.carousel {
+  position: relative;
   margin-top: 22px;
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scrollbar-width: thin;
-  scrollbar-color: v.$line-gold transparent;
 
   @include vp.lg-up {
     margin-top: 26px;
   }
 }
 
-.rail::-webkit-scrollbar {
-  height: 6px;
-}
-
-.rail::-webkit-scrollbar-thumb {
-  border-radius: 999px;
-  background-color: v.$line-gold;
-}
-
 .track {
   display: flex;
   gap: 14px;
   list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
+  scrollbar-width: none;
 
   @include vp.lg-up {
     gap: 18px;
   }
 }
 
+.track::-webkit-scrollbar {
+  display: none;
+}
+
 .item {
   flex: 0 0 auto;
-  width: 78%;
-  max-width: 300px;
+  width: 100%;
   scroll-snap-align: start;
 
+  @include vp.sm-up {
+    width: calc((100% - 14px) / 2);
+  }
+
   @include vp.md-up {
-    width: 46%;
+    width: calc((100% - 2 * 14px) / 3);
   }
 
   @include vp.lg-up {
     width: calc((100% - 3 * 18px) / 4);
-    max-width: none;
   }
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 14px;
+}
+
+.carousel[data-static="true"] .controls {
+  display: none;
+}
+
+.control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid v.$line-gold;
+  border-radius: 50%;
+  background: none;
+  color: v.$gold-pale;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+}
+
+.control:hover {
+  border-color: v.$gold-pale;
+  color: v.$white;
+}
+
+.prev svg {
+  transform: rotate(180deg);
+}
+
+.carousel[data-at-start="true"] .prev,
+.carousel[data-at-end="true"] .control:not(.prev) {
+  opacity: 0.35;
+  pointer-events: none;
 }
 
 .card {

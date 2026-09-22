@@ -1,0 +1,77 @@
+@use "variables" as v;
+@use "viewPortMixins" as vp;
+
+.page {
+  padding-block: 99px 40px;
+
+  @include vp.lg-up {
+    padding-block: 158px 60px;
+  }
+}
+
+.head {
+  padding-bottom: 20px;
+  border-bottom: 1px solid v.$line;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: v.$weight-semibold;
+  line-height: 1.2;
+
+  @include vp.lg-up {
+    font-size: 50px;
+    line-height: calc(60 / 50);
+  }
+}
+
+.updated {
+  margin-top: 10px;
+  color: v.$gold-pale;
+  font-size: 13px;
+  line-height: calc(20 / 13);
+
+  @include vp.lg-up {
+    font-size: 14px;
+  }
+}
+
+.body {
+  display: flex;
+  max-width: 88ch;
+  flex-direction: column;
+  gap: 26px;
+  margin-top: 28px;
+
+  @include vp.lg-up {
+    gap: 32px;
+    margin-top: 36px;
+  }
+}
+
+.sectionTitle {
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: v.$weight-semibold;
+  line-height: calc(24 / 18);
+
+  @include vp.lg-up {
+    font-size: 20px;
+    line-height: calc(26 / 20);
+  }
+}
+
+.paragraph {
+  color: v.$muted;
+  font-size: 14px;
+  line-height: calc(24 / 14);
+
+  @include vp.lg-up {
+    font-size: v.$body;
+    line-height: calc(#{v.$body-line} / #{v.$body});
+  }
+}
+
+.paragraph + .paragraph {
+  margin-top: 12px;
+}

@@ -5,6 +5,8 @@ import { siteConfig } from "@/config/site.config";
 const routes = [
   "/",
   "/contact-us",
+  "/privacy-policy",
+  "/terms-conditions",
   ...primaryNav.flatMap((group) => group.items.map((item) => item.href)),
 ];
 

@@ -16,13 +16,17 @@ export function MobileNav() {
       if (event.key === "Escape") setOpen(false);
     };
 
+    const header = panel.current?.closest("header");
     const previous = document.body.style.overflow;
+
     document.body.style.overflow = "hidden";
+    if (header instanceof HTMLElement) header.dataset.mobileMenu = "open";
     document.addEventListener("keydown", onKey);
     panel.current?.focus();
 
     return () => {
       document.body.style.overflow = previous;
+      if (header instanceof HTMLElement) header.removeAttribute("data-mobile-menu");
       document.removeEventListener("keydown", onKey);
     };
   }, [open]);

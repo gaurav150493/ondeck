@@ -18,6 +18,11 @@
   backdrop-filter: blur(12px);
 }
 
+.header[data-mobile-menu="open"] {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .header {
     transition: none;

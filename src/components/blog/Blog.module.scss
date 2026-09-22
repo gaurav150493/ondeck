@@ -1,0 +1,220 @@
+@use "variables" as v;
+@use "viewPortMixins" as vp;
+
+.article {
+  padding-block: 99px 40px;
+
+  @include vp.lg-up {
+    padding-block: 158px 60px;
+  }
+}
+
+.eyebrow {
+  color: v.$cyan;
+  font-size: 12px;
+  font-weight: v.$weight-semibold;
+  line-height: 1.2;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.heading {
+  max-width: 22ch;
+  margin-top: 10px;
+  font-size: 30px;
+  font-weight: v.$weight-semibold;
+  line-height: 1.18;
+
+  @include vp.lg-up {
+    max-width: 24ch;
+    font-size: 46px;
+    line-height: calc(56 / 46);
+  }
+}
+
+.standfirst {
+  max-width: 68ch;
+  margin-top: 16px;
+  font-size: 15px;
+  line-height: calc(25 / 15);
+
+  @include vp.lg-up {
+    font-size: 18px;
+    line-height: calc(30 / 18);
+  }
+}
+
+.byline {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+  color: v.$muted;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.cover {
+  width: 100%;
+  height: 220px;
+  margin-top: 26px;
+  border-radius: v.$card-radius;
+  object-fit: cover;
+  object-position: center;
+
+  @include vp.lg-up {
+    height: 340px;
+  }
+}
+
+.body {
+  max-width: 76ch;
+  margin-top: 30px;
+}
+
+.section {
+  margin-top: 30px;
+}
+
+.sectionHeading {
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: v.$weight-semibold;
+  line-height: calc(27 / 20);
+
+  @include vp.lg-up {
+    font-size: 24px;
+    line-height: calc(32 / 24);
+  }
+}
+
+.paragraph {
+  color: v.$muted;
+  font-size: 14px;
+  line-height: calc(25 / 14);
+
+  @include vp.lg-up {
+    font-size: v.$body;
+    line-height: calc(28 / 16);
+  }
+}
+
+.paragraph + .paragraph {
+  margin-top: 14px;
+}
+
+.points {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.point {
+  position: relative;
+  padding-left: 16px;
+  color: v.$muted;
+  font-size: 14px;
+  line-height: calc(23 / 14);
+
+  @include vp.lg-up {
+    font-size: 15px;
+    line-height: calc(25 / 15);
+  }
+}
+
+.point::before {
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: v.$gold-pale;
+}
+
+.pointTitle {
+  color: v.$white;
+  font-weight: v.$weight-semibold;
+}
+
+.faq {
+  margin-top: 14px;
+}
+
+.question {
+  margin-top: 16px;
+  font-size: 15px;
+  font-weight: v.$weight-semibold;
+  line-height: calc(22 / 15);
+}
+
+.answer {
+  margin-top: 6px;
+  margin-left: 0;
+  color: v.$muted;
+  font-size: 14px;
+  line-height: calc(24 / 14);
+}
+
+.related {
+  max-width: 76ch;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid v.$line;
+}
+
+.relatedTitle {
+  color: v.$cyan;
+  font-size: 12px;
+  font-weight: v.$weight-semibold;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.relatedList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.relatedLink {
+  display: inline-flex;
+  padding: 7px 12px;
+  border: 1px solid v.$field-border;
+  border-radius: v.$radius-sm;
+  font-size: 13px;
+  line-height: 1.3;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.relatedLink:hover {
+  border-color: v.$line-gold;
+  color: v.$gold-pale;
+}
+
+.cta {
+  display: flex;
+  max-width: 76ch;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  margin-top: 32px;
+  padding: 20px;
+  border: 1px solid v.$field-border;
+  border-radius: v.$card-radius;
+  background-color: v.$surface-card;
+}
+
+.ctaBody {
+  color: v.$muted;
+  font-size: 14px;
+  line-height: calc(24 / 14);
+}
+
+@include vp.reduced-motion {
+  .relatedLink {
+    transition: none;
+  }
+}

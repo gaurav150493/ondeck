@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { primaryNav } from "@/components/header/header.constants";
+import { posts } from "@/content/blog/posts.constants";
 import { siteConfig } from "@/config/site.config";
 
 const routes = [
@@ -8,6 +9,7 @@ const routes = [
   "/privacy-policy",
   "/terms-conditions",
   ...primaryNav.flatMap((group) => group.items.map((item) => item.href)),
+  ...posts.map((post) => `/blog/${post.slug}`),
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

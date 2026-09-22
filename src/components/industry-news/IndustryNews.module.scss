@@ -1,24 +1,57 @@
 @use "variables" as v;
 @use "viewPortMixins" as vp;
 
-.grid {
-  display: grid;
-  gap: 14px;
+.rail {
   margin-top: 22px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: v.$line-gold transparent;
+
+  @include vp.lg-up {
+    margin-top: 26px;
+  }
+}
+
+.rail::-webkit-scrollbar {
+  height: 6px;
+}
+
+.rail::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background-color: v.$line-gold;
+}
+
+.track {
+  display: flex;
+  gap: 14px;
+  list-style: none;
+  scroll-snap-type: x mandatory;
+
+  @include vp.lg-up {
+    gap: 18px;
+  }
+}
+
+.item {
+  flex: 0 0 auto;
+  width: 78%;
+  max-width: 300px;
+  scroll-snap-align: start;
 
   @include vp.md-up {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 46%;
   }
 
   @include vp.lg-up {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 18px;
-    margin-top: 26px;
+    width: calc((100% - 3 * 18px) / 4);
+    max-width: none;
   }
 }
 
 .card {
   display: flex;
+  height: 100%;
   flex-direction: column;
   overflow: hidden;
   border: 1px solid v.$gold;
@@ -75,6 +108,7 @@
 }
 
 .date {
+  margin-top: auto;
   color: v.$muted;
   font-size: v.$tiny;
   line-height: 1.21;
@@ -90,5 +124,15 @@
 @include vp.lg-up {
   .link {
     display: none;
+  }
+}
+
+@include vp.reduced-motion {
+  .card {
+    transition: none;
+  }
+
+  .track {
+    scroll-snap-type: none;
   }
 }

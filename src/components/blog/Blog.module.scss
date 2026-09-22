@@ -319,3 +319,143 @@
     transition: none;
   }
 }
+
+.subHeading {
+  margin-top: 4px;
+  margin-bottom: 8px;
+  font-size: 17px;
+  font-weight: v.$weight-semibold;
+  line-height: calc(24 / 17);
+
+  @include vp.lg-up {
+    font-size: 19px;
+    line-height: calc(27 / 19);
+  }
+}
+
+.srOnly {
+  position: absolute;
+  overflow: hidden;
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  white-space: nowrap;
+}
+
+.tableScroll {
+  margin-top: 16px;
+
+  @include vp.md-up {
+    overflow-x: auto;
+    border: 1px solid v.$line-strong;
+    border-radius: v.$card-radius;
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.table thead {
+  display: none;
+}
+
+.table tbody tr {
+  display: block;
+  margin-bottom: 10px;
+  overflow: hidden;
+  border: 1px solid v.$line;
+  border-radius: v.$card-radius;
+  background-color: v.$surface-card;
+}
+
+.table tbody th {
+  display: block;
+  padding: 10px 14px;
+  border-bottom: 1px solid v.$line;
+  background-color: v.$surface-row;
+  color: v.$gold-pale;
+  font-size: 14px;
+  font-weight: v.$weight-semibold;
+  line-height: calc(20 / 14);
+}
+
+.table tbody td {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  padding: 9px 14px;
+  color: v.$white;
+  font-size: 13px;
+  line-height: calc(20 / 13);
+}
+
+.table tbody td + td {
+  border-top: 1px solid v.$line;
+}
+
+.table tbody td::before {
+  content: attr(data-column);
+  flex-shrink: 0;
+  color: v.$muted;
+  font-weight: v.$weight-semibold;
+}
+
+@include vp.md-up {
+  .table thead {
+    display: table-header-group;
+  }
+
+  .table tbody tr {
+    display: table-row;
+    margin-bottom: 0;
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+  }
+
+  .table tbody tr:nth-child(even) {
+    background-color: v.$surface-row;
+  }
+
+  .table thead th,
+  .table tbody th,
+  .table tbody td {
+    display: table-cell;
+    padding: 12px 16px;
+    vertical-align: top;
+    font-size: 14px;
+    line-height: calc(21 / 14);
+  }
+
+  .table thead th {
+    border-bottom: 1px solid v.$line-strong;
+    background: v.$gold-accent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: v.$weight-semibold;
+  }
+
+  .table tbody th {
+    border-bottom: 0;
+    background-color: transparent;
+    color: v.$white;
+  }
+
+  .table tbody tr + tr th,
+  .table tbody tr + tr td {
+    border-top: 1px solid v.$line;
+  }
+
+  .table tbody td + td,
+  .table tbody th + td {
+    border-left: 1px solid v.$line;
+  }
+
+  .table tbody td::before {
+    content: none;
+  }
+}

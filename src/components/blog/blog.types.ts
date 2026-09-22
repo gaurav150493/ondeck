@@ -3,10 +3,15 @@ export interface BlogListItem {
   body: string;
 }
 
+export type BlogBlock =
+  | { type: "p"; value: string }
+  | { type: "item"; title: string; body: string }
+  | { type: "table"; columns: string[]; rows: { label: string; values: string[] }[] };
+
 export interface BlogSection {
   heading: string;
-  paragraphs: string[];
-  items: BlogListItem[];
+  level: number;
+  blocks: BlogBlock[];
 }
 
 export interface BlogFaqItem {

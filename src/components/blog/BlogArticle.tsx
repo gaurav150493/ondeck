@@ -61,22 +61,56 @@ export function BlogArticle({ post }: { post: BlogPost }) {
 
             {post.sections.map((section) => (
               <section key={section.heading} className={styles.section} id={slugify(section.heading)}>
-                <h2 className={styles.sectionHeading}>{section.heading}</h2>
-                {section.paragraphs.map((paragraph) => (
-                  <p key={paragraph} className={styles.paragraph}>
-                    {paragraph}
-                  </p>
-                ))}
-                {section.items.length > 0 ? (
-                  <ul className={styles.points}>
-                    {section.items.map((item) => (
-                      <li key={item.title} className={styles.point}>
-                        <strong className={styles.pointTitle}>{item.title}</strong>
-                        {item.body ? ` — ${item.body}` : null}
-                      </li>
-                    ))}
-                  </ul>
-                ) : null}
+                {section.level > 1 ? (
+                  <h3 className={styles.subHeading}>{section.heading}</h3>
+                ) : (
+                  <h2 className={styles.sectionHeading}>{section.heading}</h2>
+                )}
+                {groupBlocks(section.blocks).map((group, index) =>
+                  group.type === "items" ? (
+                    <ul key={index} className={styles.points}>
+                      {group.items.map((item) => (
+                        <li key={item.title} className={styles.point}>
+                          <strong className={styles.pointTitle}>{item.title}</strong>
+                          {item.body ? ` — ${item.body}` : null}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : group.type === "table" ? (
+                    <div key={index} className={styles.tableScroll}>
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th scope="col">
+                              <span className={styles.srOnly}>Item</span>
+                            </th>
+                            {group.columns.map((column) => (
+                              <th key={column} scope="col">
+                                {column}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {group.rows.map((row) => (
+                            <tr key={row.label}>
+                              <th scope="row">{row.label}</th>
+                              {row.values.map((value, column) => (
+                                <td key={group.columns[column]} data-column={group.columns[column]}>
+                                  {value}
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  ) : (
+                    <p key={index} className={styles.paragraph}>
+                      {group.value}
+                    </p>
+                  ),
+                )}
               </section>
             ))}
 
@@ -146,6 +180,29 @@ export function BlogArticle({ post }: { post: BlogPost }) {
       </article>
     </main>
   );
+}
+
+type BlockGroup =
+  | { type: "p"; value: string }
+  | { type: "items"; items: { title: string; body: string }[] }
+  | { type: "table"; columns: string[]; rows: { label: string; values: string[] }[] };
+
+function groupBlocks(blocks: BlogPost["sections"][number]["blocks"]) {
+  const groups: BlockGroup[] = [];
+
+  for (const block of blocks) {
+    if (block.type === "item") {
+      const last = groups.at(-1);
+      if (last?.type === "items") last.items.push({ title: block.title, body: block.body });
+      else groups.push({ type: "items", items: [{ title: block.title, body: block.body }] });
+    } else if (block.type === "table") {
+      groups.push({ type: "table", columns: block.columns, rows: block.rows });
+    } else {
+      groups.push({ type: "p", value: block.value });
+    }
+  }
+
+  return groups;
 }
 
 function slugify(value: string) {

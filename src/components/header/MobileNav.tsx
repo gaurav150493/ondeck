@@ -46,7 +46,7 @@ export function MobileNav() {
         className={styles.menuPanel}
         data-open={open}
         tabIndex={-1}
-        hidden={!open}
+        inert={!open}
       >
         <nav className={styles.menuInner} aria-label="Mobile">
           {primaryNav.map((group) => (

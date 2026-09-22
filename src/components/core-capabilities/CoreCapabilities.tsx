@@ -60,7 +60,7 @@ export function CoreCapabilities() {
                 highlight="growth."
               />
               <Button
-                href="/platform/modules"
+                href="/platform/pam"
                 variant="gradient"
                 size="large"
                 icon={<ArrowRightIcon />}

@@ -227,9 +227,10 @@
   left: 0;
   z-index: 40;
   overflow-y: auto;
+  visibility: hidden;
   background-color: v.$black;
-  opacity: 0;
-  transition: opacity 0.22s ease;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1), visibility 0.3s;
 
   @include vp.lg-up {
     display: none;
@@ -237,13 +238,31 @@
 }
 
 .menuPanel[data-open="true"] {
-  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
 }
 
 .menuInner {
   display: grid;
   gap: 26px;
   padding: 26px v.$inset-mobile 48px;
+}
+
+.menuGroup {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.26s ease, transform 0.26s ease;
+}
+
+.menuPanel[data-open="true"] .menuGroup {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@for $i from 1 through 4 {
+  .menuPanel[data-open="true"] .menuGroup:nth-child(#{$i}) {
+    transition-delay: #{$i * 45}ms;
+  }
 }
 
 .menuGroupLabel {
@@ -281,6 +300,7 @@
 
 @include vp.reduced-motion {
   .menuPanel,
+  .menuGroup,
   .menuBars,
   .menuBars::before,
   .menuBars::after {

@@ -32,7 +32,7 @@ export function Hero() {
             The all-in-one iGaming platform for ambitious operators.
           </p>
           <div className={styles.actions}>
-            <Button href="/platform/overview" size="large" icon={<ArrowRightIcon />}>
+            <Button href="/platform/pam" size="large" icon={<ArrowRightIcon />}>
               Explore Platform
             </Button>
             <Button href="/contact-us" variant="hollow" size="large" icon={<ArrowRightIcon />}>

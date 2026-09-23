@@ -48,18 +48,7 @@
 }
 
 .track {
-  --step: 50vh;
-}
-
-.track[data-pin="on"]::after {
-  content: "";
-  display: block;
-  height: calc(var(--steps) * var(--step));
-}
-
-.track[data-pin="on"] .sticky {
-  position: sticky;
-  top: var(--pin-offset, 0px);
+  position: relative;
 }
 
 .visual {
@@ -226,71 +215,35 @@
   opacity: 1;
 }
 
-@for $i from 0 through 5 {
-  .track[data-active="#{$i}"] .item[data-index="#{$i}"] .iconWrap {
-    @include node-lit;
-  }
-
-  .track[data-active="#{$i}"] .item[data-index="#{$i}"] .detail {
-    @include detail-open;
-  }
-}
-
 @include vp.lg-up {
-  .track[data-active] .line {
-    opacity: 0.3;
-  }
-
-  @for $i from 0 through 5 {
-    .track[data-active="#{$i}"] svg.line[data-index="#{$i}"] {
-      opacity: 1;
-    }
-
-    .track[data-active="#{$i}"] svg.line[data-index="#{$i}"] .lineDotted {
-      opacity: 0;
-    }
-
-    .track[data-active="#{$i}"] svg.line[data-index="#{$i}"] .lineSolid {
-      opacity: 1;
-    }
-  }
-
-  .track:not([data-active]) .item:hover .iconWrap {
+  .track .item:hover .iconWrap {
     @include node-lit;
   }
 
-  .track:not([data-active]) .item:hover .detail {
+  .track .item:hover .detail {
     @include detail-open;
   }
 
-  .track:not([data-active]) .right:has(.item:hover) .line {
+  .track .right:has(.item:hover) .line {
     opacity: 0.3;
   }
 
   @for $i from 0 through 5 {
-    .track:not([data-active]) .right:has(.item[data-index="#{$i}"]:hover) svg.line[data-index="#{$i}"] {
+    .track .right:has(.item[data-index="#{$i}"]:hover) svg.line[data-index="#{$i}"] {
       opacity: 1;
     }
 
-    .track:not([data-active]) .right:has(.item[data-index="#{$i}"]:hover) svg.line[data-index="#{$i}"] .lineDotted {
+    .track .right:has(.item[data-index="#{$i}"]:hover) svg.line[data-index="#{$i}"] .lineDotted {
       opacity: 0;
     }
 
-    .track:not([data-active]) .right:has(.item[data-index="#{$i}"]:hover) svg.line[data-index="#{$i}"] .lineSolid {
+    .track .right:has(.item[data-index="#{$i}"]:hover) svg.line[data-index="#{$i}"] .lineSolid {
       opacity: 1;
     }
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .track::after {
-    display: none;
-  }
-
-  .track .sticky {
-    position: static;
-  }
-
   .line,
   .lineDotted,
   .lineSolid,

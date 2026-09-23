@@ -4,7 +4,6 @@ import { ArrowRightIcon } from "@/common/icons";
 import { SectionHeading } from "@/common/SectionHeading/SectionHeading";
 import containerStyles from "@/styles/container.module.scss";
 import { CapabilityLineDefs, CapabilityLine } from "./CapabilityLines";
-import { CapabilityPin } from "./CapabilityPin";
 import styles from "./CoreCapabilities.module.scss";
 import { capabilities } from "./coreCapabilities.constants";
 import type { Capability, CapabilitySide } from "./coreCapabilities.types";
@@ -43,7 +42,7 @@ export function CoreCapabilities() {
       className={`${containerStyles.section} ${styles.section}`}
       aria-labelledby="core-capabilities"
     >
-      <CapabilityPin count={capabilities.length}>
+      <div className={styles.track}>
         <div className={containerStyles.container}>
           <div className={styles.panel}>
             <div className={styles.left}>
@@ -90,7 +89,7 @@ export function CoreCapabilities() {
             </div>
           </div>
         </div>
-      </CapabilityPin>
+      </div>
     </section>
   );
 }

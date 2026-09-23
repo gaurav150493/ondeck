@@ -109,8 +109,9 @@
   align-items: center;
   gap: 6px;
   color: v.$gold-pale;
-  font-size: 11px;
-  line-height: 1;
+  font-size: 13px;
+  line-height: calc(16 / 13);
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 

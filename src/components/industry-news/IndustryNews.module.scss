@@ -121,15 +121,11 @@
 .tag {
   margin-bottom: 8px;
   color: v.$blue;
-  font-size: v.$eyebrow;
+  font-size: v.$small;
   font-weight: v.$weight-semibold;
-  line-height: calc(#{v.$eyebrow-line} / #{v.$eyebrow});
+  line-height: calc(15 / 12);
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-
-  @include vp.lg-up {
-    font-size: v.$tiny;
-    line-height: calc(12.1 / 10);
-  }
 }
 
 .title {
@@ -137,18 +133,13 @@
   font-size: 14px;
   font-weight: v.$weight-regular;
   line-height: calc(20 / 14);
-
-  @include vp.lg-up {
-    font-size: v.$small;
-    line-height: calc(#{v.$small-line} / #{v.$small});
-  }
 }
 
 .date {
   margin-top: auto;
   color: v.$muted;
-  font-size: v.$tiny;
-  line-height: 1.21;
+  font-size: v.$small;
+  line-height: calc(17 / 12);
 }
 
 .link {

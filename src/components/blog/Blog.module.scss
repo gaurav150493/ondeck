@@ -210,7 +210,7 @@
 
 .asideTitle {
   color: v.$cyan;
-  font-size: 11px;
+  font-size: v.$small;
   font-weight: v.$weight-semibold;
   letter-spacing: 0.8px;
   text-transform: uppercase;
@@ -251,8 +251,8 @@
   padding: 6px 10px;
   border: 1px solid v.$field-border;
   border-radius: v.$radius-sm;
-  font-size: 12px;
-  line-height: 1.3;
+  font-size: 13px;
+  line-height: 1.35;
   transition: border-color 0.2s ease, color 0.2s ease;
 }
 

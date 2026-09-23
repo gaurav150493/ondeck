@@ -49,16 +49,12 @@
   font-size: 14px;
   font-weight: v.$weight-semibold;
   line-height: calc(16.9 / 14);
+  letter-spacing: 0.02em;
   text-transform: uppercase;
-
-  @include vp.lg-up {
-    font-size: v.$label;
-    line-height: calc(#{v.$label-line} / #{v.$label});
-  }
 }
 
 .note {
   color: v.$muted;
-  font-size: v.$small;
-  line-height: calc(#{v.$tiny-line} / #{v.$small});
+  font-size: 13px;
+  line-height: calc(18 / 13);
 }

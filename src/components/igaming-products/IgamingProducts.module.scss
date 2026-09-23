@@ -74,11 +74,6 @@ $deck-gap: 11px;
   color: v.$muted;
   font-size: 14px;
   line-height: calc(20 / 14);
-
-  @include vp.lg-up {
-    font-size: v.$small;
-    line-height: calc(#{v.$small-line} / #{v.$small});
-  }
 }
 
 .arrow {

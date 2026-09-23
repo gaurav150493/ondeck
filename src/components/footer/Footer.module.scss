@@ -63,8 +63,8 @@
 
   @include vp.lg-up {
     margin-bottom: 8px;
-    font-size: v.$small;
-    line-height: 1.21;
+    font-size: 14px;
+    line-height: calc(17 / 14);
   }
 }
 
@@ -72,14 +72,14 @@
   display: block;
   padding-block: 4px;
   color: v.$muted;
-  font-size: v.$small;
-  line-height: calc(25 / 12);
+  font-size: 13px;
+  line-height: calc(25 / 13);
   overflow-wrap: break-word;
   transition: color 0.2s ease;
 
   @include vp.lg-up {
     padding-block: 2px;
-    line-height: calc(20 / 12);
+    line-height: calc(21 / 13);
   }
 }
 
@@ -90,8 +90,8 @@
 .about {
   max-width: 34ch;
   color: v.$muted;
-  font-size: v.$small;
-  line-height: calc(20 / 12);
+  font-size: 14px;
+  line-height: calc(22 / 14);
 }
 
 .legal {
@@ -102,8 +102,8 @@
 
 .legalLink {
   color: v.$muted;
-  font-size: v.$tiny;
-  line-height: calc(#{v.$tiny-line} / #{v.$tiny});
+  font-size: v.$small;
+  line-height: calc(18 / 12);
   transition: color 0.2s ease;
 }
 
@@ -113,6 +113,6 @@
 
 .copyright {
   color: v.$muted;
-  font-size: v.$tiny;
-  line-height: calc(#{v.$tiny-line} / #{v.$tiny});
+  font-size: v.$small;
+  line-height: calc(18 / 12);
 }

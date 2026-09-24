@@ -4,7 +4,7 @@ import { ArrowRightIcon, GiftIcon } from "@/common/icons";
 import { offer, showOffer } from "@/config/offer.config";
 import containerStyles from "@/styles/container.module.scss";
 import styles from "./CtaBanner.module.scss";
-import { OfferVideo } from "./OfferVideo";
+import { OfferConfetti } from "./OfferConfetti";
 
 export function CtaBanner() {
   return (
@@ -21,7 +21,7 @@ export function CtaBanner() {
           height={916}
         />
 
-        {showOffer && <OfferVideo src={offer.video} />}
+        {showOffer && <OfferConfetti src={offer.confetti} />}
       </div>
 
       <div className={`${containerStyles.container} ${styles.inner}`}>

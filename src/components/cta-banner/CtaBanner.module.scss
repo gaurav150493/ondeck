@@ -148,25 +148,43 @@
   z-index: 1;
   opacity: 0;
   pointer-events: none;
-  mix-blend-mode: screen;
   transition: opacity 0.4s ease;
 }
 
-.confettiPlaying {
-  opacity: 1;
+@keyframes confettiShow {
+  0% {
+    opacity: 0;
+  }
+
+  8% {
+    opacity: 1;
+  }
+
+  84% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
-.confettiDone {
-  opacity: 0;
+.confettiRun {
+  animation: confettiShow 2.75s ease forwards;
 }
 
-.confetti video {
+.confetti img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .confettiRun {
+    animation: none;
+  }
+
   .confetti {
     display: none;
   }

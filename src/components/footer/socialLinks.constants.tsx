@@ -1,4 +1,4 @@
-import { FacebookIcon, LinkedInIcon, YouTubeIcon } from "@/common/icons";
+import { InstagramIcon, XIcon } from "@/common/icons";
 import { siteConfig } from "@/config/site.config";
 import type { ReactNode } from "react";
 
@@ -9,7 +9,6 @@ interface SocialLink {
 }
 
 export const socialLinks: SocialLink[] = [
-  { label: "LinkedIn", href: siteConfig.social.linkedin, icon: <LinkedInIcon /> },
-  { label: "Facebook", href: siteConfig.social.facebook, icon: <FacebookIcon /> },
-  { label: "YouTube", href: siteConfig.social.youtube, icon: <YouTubeIcon /> },
+  { label: "Instagram", href: siteConfig.social.instagram, icon: <InstagramIcon /> },
+  { label: "X", href: siteConfig.social.x, icon: <XIcon /> },
 ];

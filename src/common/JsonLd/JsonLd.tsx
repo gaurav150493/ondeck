@@ -8,11 +8,7 @@ export function JsonLd() {
       name: siteConfig.name,
       url: siteConfig.url,
       logo: `${siteConfig.url}/images/logo-header.webp`,
-      sameAs: [
-        siteConfig.social.linkedin,
-        siteConfig.social.facebook,
-        siteConfig.social.youtube,
-      ],
+      sameAs: [siteConfig.social.instagram, siteConfig.social.x],
     },
     {
       "@type": "WebSite",

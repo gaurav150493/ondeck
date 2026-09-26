@@ -8,8 +8,7 @@ export const siteConfig = {
   locale: "en_US",
   indexable: process.env.NEXT_PUBLIC_ENABLE_INDEXING === "true",
   social: {
-    linkedin: "https://www.linkedin.com/company/ondeck-global",
-    facebook: "https://www.facebook.com/ondeckglobal",
-    youtube: "https://www.youtube.com/@ondeckglobal",
+    instagram: "https://www.instagram.com/ondeckglobal_official/",
+    x: "https://x.com/Ondeck_Official",
   },
 } as const;

@@ -644,6 +644,19 @@
   }
 }
 
+.splitProse {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: 15px;
+  line-height: calc(26 / 15);
+
+  @include vp.lg-up {
+    font-size: 17px;
+    line-height: calc(29 / 17);
+  }
+}
+
 .points {
   display: flex;
   flex-direction: column;

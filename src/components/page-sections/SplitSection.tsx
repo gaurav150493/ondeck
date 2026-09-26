@@ -5,6 +5,13 @@ import styles from "./PageSections.module.scss";
 import { SectionIntro } from "./SectionIntro";
 import type { CardGridContent } from "./pageSections.types";
 
+interface SplitSectionProps extends CardGridContent {
+  image?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  paragraphs?: string[];
+}
+
 export function SplitSection({
   id,
   eyebrow,
@@ -13,7 +20,11 @@ export function SplitSection({
   intro,
   outro,
   groups,
-}: CardGridContent) {
+  paragraphs,
+  image = "/images/pages/tradeoff-art.webp",
+  imageWidth = 1024,
+  imageHeight = 848,
+}: SplitSectionProps) {
   const points = groups.flatMap((group) => group.items);
 
   return (
@@ -21,27 +32,41 @@ export function SplitSection({
       <div className={styles.splitInner}>
         <Image
           className={styles.splitArt}
-          src="/images/pages/tradeoff-art.webp"
+          src={image}
           alt=""
-          width={1024}
-          height={848}
+          width={imageWidth}
+          height={imageHeight}
         />
 
         <div className={`${containerStyles.container} ${styles.splitBody}`}>
-          <SectionIntro eyebrow={eyebrow} title={title} titleAccent={titleAccent} />
+          {title ? (
+            <SectionIntro eyebrow={eyebrow} title={title} titleAccent={titleAccent} />
+          ) : null}
           {intro ? <p className={styles.sectionIntro}>{intro}</p> : null}
-          <ul className={styles.points}>
-            {points.map((point) => (
-              <li key={point.title} className={styles.point}>
-                <span className={styles.pointMark} aria-hidden="true">
-                  <CircleCheckIcon size={20} />
-                </span>
-                <span>
-                  <strong className={styles.pointTitle}>{point.title}</strong> {point.body}
-                </span>
-              </li>
-            ))}
-          </ul>
+
+          {paragraphs?.length ? (
+            <div className={styles.splitProse}>
+              {paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          ) : null}
+
+          {points.length > 0 ? (
+            <ul className={styles.points}>
+              {points.map((point) => (
+                <li key={point.title} className={styles.point}>
+                  <span className={styles.pointMark} aria-hidden="true">
+                    <CircleCheckIcon size={20} />
+                  </span>
+                  <span>
+                    <strong className={styles.pointTitle}>{point.title}</strong> {point.body}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+
           {outro ? <p className={styles.sectionOutro}>{outro}</p> : null}
         </div>
       </div>

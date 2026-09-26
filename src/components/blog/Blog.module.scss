@@ -89,24 +89,8 @@
   font-weight: v.$weight-semibold;
 }
 
-.lead {
-  padding-block: 8px;
-}
 
-.leadParagraph {
-  max-width: 74ch;
-  font-size: 16px;
-  line-height: calc(27 / 16);
 
-  @include vp.lg-up {
-    font-size: 18px;
-    line-height: calc(31 / 18);
-  }
-}
-
-.leadParagraph + .leadParagraph {
-  margin-top: 16px;
-}
 
 .relatedBand {
   padding-block: 8px;

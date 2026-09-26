@@ -6,8 +6,8 @@ import { primaryNav } from "@/components/header/header.constants";
 import { CardGrid } from "@/components/page-sections/CardGrid";
 import { CompareTable } from "@/components/page-sections/CompareTable";
 import { FaqAccordion } from "@/components/page-sections/FaqAccordion";
-import { ProseBand } from "@/components/page-sections/ProseBand";
 import { ProseSection } from "@/components/page-sections/ProseSection";
+import { SplitSection } from "@/components/page-sections/SplitSection";
 import containerStyles from "@/styles/container.module.scss";
 import styles from "./Blog.module.scss";
 import { sectionShape, splitHeading } from "./blogSections";
@@ -25,11 +25,6 @@ const navLabels = new Map(
 
 export function BlogArticle({ post }: { post: BlogPost }) {
   const related = post.related.filter((href) => navLabels.has(href));
-  const bandIndex = post.sections.findIndex((section) => {
-    const { items, tables } = sectionShape(section);
-    return items.length === 0 && tables.length === 0;
-  });
-
   return (
     <main className={containerStyles.page}>
       <article>
@@ -61,17 +56,15 @@ export function BlogArticle({ post }: { post: BlogPost }) {
           </div>
         </header>
 
-        <section className={styles.lead}>
-          <div className={containerStyles.container}>
-            {post.lead.map((paragraph) => (
-              <p key={paragraph} className={styles.leadParagraph}>
-                {paragraph}
-              </p>
-            ))}
-          </div>
-        </section>
+        <SplitSection
+          image={post.image}
+          imageWidth={554}
+          imageHeight={742}
+          paragraphs={post.lead}
+          groups={[]}
+        />
 
-        {post.sections.map((section, index) => {
+        {post.sections.map((section) => {
           const { items, tables, paragraphs } = sectionShape(section);
           const { title, titleAccent } = splitHeading(section.heading);
           const key = section.heading;
@@ -110,9 +103,7 @@ export function BlogArticle({ post }: { post: BlogPost }) {
             );
           }
 
-          return index === bandIndex ? (
-            <ProseBand key={key} title={title} titleAccent={titleAccent} paragraphs={paragraphs} />
-          ) : (
+          return (
             <ProseSection key={key} title={title} titleAccent={titleAccent} paragraphs={paragraphs} />
           );
         })}

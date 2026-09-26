@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Button } from "@/common/Button/Button";
 import { ArrowRightIcon } from "@/common/icons";
 import containerStyles from "@/styles/container.module.scss";
+import { HeroChip } from "./HeroChip";
 import styles from "./Hero.module.scss";
 
 export function Hero() {
@@ -12,11 +13,12 @@ export function Hero() {
           className={styles.background}
           src="/images/hero-banner.webp"
           alt=""
-          width={1600}
-          height={738}
+          width={1280}
+          height={673}
           priority
           sizes="100vw"
         />
+        <HeroChip />
       </div>
 
       <div className={containerStyles.container}>

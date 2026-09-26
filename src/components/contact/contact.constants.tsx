@@ -8,6 +8,7 @@ import {
   WhatsAppIcon,
 } from "@/common/icons";
 import type { FaqContent } from "@/components/page-sections/pageSections.types";
+import { countries } from "./countries.constants";
 
 export const hero = {
   eyebrow: "Contact Us",
@@ -44,15 +45,14 @@ export const formFields: FormField[] = [
     placeholder: "Select your country",
     type: "select",
     half: true,
-    options: [],
+    options: countries,
   },
   {
     name: "reason",
     label: "Reason for contacting",
-    placeholder: "Select a topic",
-    type: "select",
+    placeholder: "What is this about?",
+    type: "text",
     half: true,
-    options: [],
   },
   { name: "message", label: "Message", placeholder: "Tell us how we can help...", type: "textarea" },
 ];

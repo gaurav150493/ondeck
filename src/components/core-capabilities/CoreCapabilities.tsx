@@ -49,7 +49,13 @@ export function CoreCapabilities() {
               <SectionHeading
                 id="core-capabilities"
                 eyebrow="Core capabilities & modules"
-                title="Engineered for scale. Build for"
+                title={
+                  <>
+                    Engineered for scale.
+                    <br />
+                    Build for
+                  </>
+                }
                 highlight="growth."
               />
               <Button

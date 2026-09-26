@@ -7,7 +7,7 @@ export const post: BlogPost = {
   standfirst: "The technology trends get the headlines. The structural shifts in tax, regulation and market shape are what will actually decide which operators make it through the next few years.",
   seoTitle: "The Future of iGaming: 6 Forces Reshaping the Industry",
   description: "Tax rises, fragmented regulation, prediction markets and consolidation are reshaping iGaming faster than any technology trend. What operators should plan for now.",
-  image: "/images/news/future-of-igaming-art.webp",
+  image: "/images/news/future-of-igaming-photo.webp",
   author: "Ellen Tilly",
   publishedAt: "2026-09-15",
   readingMinutes: 8,

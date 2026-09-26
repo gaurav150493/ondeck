@@ -4,10 +4,10 @@
 .stack {
   display: flex;
   flex-direction: column;
-  gap: 44px;
+  gap: 22px;
 
   @include vp.lg-up {
-    gap: 60px;
+    gap: 30px;
   }
 }
 
@@ -103,13 +103,13 @@
 
 
 .relatedBand {
-  margin-top: 26px;
-  padding-block: 32px 8px;
+  margin-top: 13px;
+  padding-block: 16px 8px;
   border-top: 1px solid v.$line;
 
   @include vp.lg-up {
-    margin-top: 40px;
-    padding-block: 44px 8px;
+    margin-top: 20px;
+    padding-block: 22px 8px;
   }
 }
 

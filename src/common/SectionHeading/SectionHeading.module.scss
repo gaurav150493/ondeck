@@ -31,10 +31,6 @@
   letter-spacing: 0;
   text-wrap: balance;
 
-  @include vp.lg-up {
-    white-space: nowrap;
-  }
-
   @media (min-width: 1024px) {
     font-size: v.$h2;
     line-height: calc(#{v.$h2-line} / #{v.$h2});

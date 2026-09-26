@@ -7,7 +7,7 @@ export const post: BlogPost = {
   standfirst: "They look alike on screen and work completely differently underneath. Here is how prediction markets change the economics of betting, where the regulatory fight stands, and what that means for operators.",
   seoTitle: "Prediction Markets vs Sportsbooks: What Operators Must Know",
   description: "How prediction markets differ from sportsbooks in pricing, risk and revenue, where the legal fight stands in late 2026, and what operators should consider before adding one.",
-  image: "/images/news/prediction-markets-vs-sportsbooks-art.webp",
+  image: "/images/news/prediction-markets-vs-sportsbooks-photo.webp",
   author: "Ellen Tilly",
   publishedAt: "2026-08-20",
   readingMinutes: 5,

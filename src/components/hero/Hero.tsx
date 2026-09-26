@@ -11,7 +11,7 @@ export function Hero() {
       <div className={styles.art}>
         <Image
           className={styles.background}
-          src="/images/hero-banner.webp"
+          src="/images/hero-banner-v2.webp"
           alt=""
           width={1280}
           height={673}

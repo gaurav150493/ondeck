@@ -7,6 +7,7 @@ export const meta = {
 };
 
 export const hero: PageHeroContent = {
+  image: "/images/pages/hero-sweepstakes.webp",
   eyebrow: "Sweepstakes",
   title: "Dual currency,",
   titleAccent: "built for a map that keeps changing.",

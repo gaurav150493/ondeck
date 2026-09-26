@@ -7,6 +7,7 @@ export const meta = {
 };
 
 export const hero: PageHeroContent = {
+  image: "/images/pages/hero-promo-engine.webp",
   eyebrow: "Promo Engine",
   title: "Promotions without a development ticket.",
   titleAccent: "",

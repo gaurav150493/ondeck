@@ -7,6 +7,7 @@ export const meta = {
 };
 
 export const hero: PageHeroContent = {
+  image: "/images/pages/hero-games-aggregation.webp",
   eyebrow: "Games Aggregation",
   title: "Every provider.",
   titleAccent: "One integration.",

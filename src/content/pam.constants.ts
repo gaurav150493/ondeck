@@ -7,6 +7,7 @@ export const meta = {
 };
 
 export const hero: PageHeroContent = {
+  image: "/images/pages/hero-pam.webp",
   eyebrow: "Player Account Management",
   title: "One player record.",
   titleAccent: "Everything plugs into it.",

@@ -7,6 +7,7 @@ export const meta = {
 };
 
 export const hero: PageHeroContent = {
+  image: "/images/pages/hero-sportsbook.webp",
   eyebrow: "Sportsbook",
   title: "One wallet. One back office.",
   titleAccent: "No seam.",

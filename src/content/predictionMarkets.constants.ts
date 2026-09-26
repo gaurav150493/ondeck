@@ -6,6 +6,7 @@ export const meta = {
 };
 
 export const hero: PageHeroContent = {
+  image: "/images/pages/hero-prediction-markets.webp",
   eyebrow: "Prediction Markets  ·  On Roadmap",
   title: "Event contracts,",
   titleAccent: "as a first-class vertical.",

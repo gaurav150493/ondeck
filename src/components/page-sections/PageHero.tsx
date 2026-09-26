@@ -5,16 +5,23 @@ import containerStyles from "@/styles/container.module.scss";
 import styles from "./PageSections.module.scss";
 import type { PageHeroContent } from "./pageSections.types";
 
-export function PageHero({ eyebrow, title, titleAccent, subhead, ctas }: PageHeroContent) {
+export function PageHero({
+  image = "/images/pages/page-hero.webp",
+  eyebrow,
+  title,
+  titleAccent,
+  subhead,
+  ctas,
+}: PageHeroContent) {
   return (
     <section className={styles.hero}>
       <div className={styles.heroArt}>
         <Image
           className={styles.heroImage}
-          src="/images/pages/page-hero.webp"
+          src={image}
           alt=""
-          width={1400}
-          height={788}
+          width={1600}
+          height={600}
           priority
         />
       </div>

@@ -7,6 +7,7 @@ export const meta = {
 };
 
 export const hero: PageHeroContent = {
+  image: "/images/pages/hero-cms.webp",
   eyebrow: "Content Management",
   title: "Change the site without shipping code.",
   titleAccent: "",

@@ -7,6 +7,7 @@ export const meta = {
 };
 
 export const hero: PageHeroContent = {
+  image: "/images/pages/hero-payments.webp",
   eyebrow: "Payments",
   title: "34+ methods.",
   titleAccent: "One orchestration layer.",

@@ -7,6 +7,7 @@ export const meta = {
 };
 
 export const hero: PageHeroContent = {
+  image: "/images/pages/hero-platform-migration.webp",
   eyebrow: "Platform Migration",
   title: "Move off legacy.",
   titleAccent: "Keep your players.",

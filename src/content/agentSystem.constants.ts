@@ -7,6 +7,7 @@ export const meta = {
 };
 
 export const hero: PageHeroContent = {
+  image: "/images/pages/hero-agent-system.webp",
   eyebrow: "Agent System",
   title: "Distribution that runs through people.",
   titleAccent: "",

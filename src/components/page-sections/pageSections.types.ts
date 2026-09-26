@@ -5,6 +5,7 @@ export interface PageCta {
 }
 
 export interface PageHeroContent {
+  image?: string;
   eyebrow: string;
   title: string;
   titleAccent: string;

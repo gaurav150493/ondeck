@@ -7,6 +7,7 @@ export const meta = {
 };
 
 export const hero: PageHeroContent = {
+  image: "/images/pages/hero-turnkey.webp",
   eyebrow: "Turnkey",
   title: "Your licence. Your contracts.",
   titleAccent: "Our platform.",

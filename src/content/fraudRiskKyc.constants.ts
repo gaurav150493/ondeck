@@ -7,6 +7,7 @@ export const meta = {
 };
 
 export const hero: PageHeroContent = {
+  image: "/images/pages/hero-fraud-risk-kyc.webp",
   eyebrow: "Fraud, Risk & Kyc",
   title: "Four layers between you and the people who are not here to play.",
   titleAccent: "",

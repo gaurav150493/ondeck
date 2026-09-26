@@ -313,6 +313,31 @@ select.control {
   accent-color: v.$cyan;
 }
 
+.controlInvalid {
+  border-color: v.$field-error;
+}
+
+.trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.formSent {
+  color: v.$gold-pale;
+  font-size: 13px;
+  line-height: calc(19 / 13);
+}
+
+.formError {
+  color: v.$field-error;
+  font-size: 13px;
+  line-height: calc(19 / 13);
+}
+
 .submit {
   display: inline-flex;
   gap: 10px;
@@ -332,6 +357,11 @@ select.control {
 
 .submit:hover {
   filter: brightness(1.08);
+}
+
+.submit:disabled {
+  cursor: progress;
+  opacity: 0.65;
 }
 
 .teams {
@@ -360,7 +390,32 @@ select.control {
 @include vp.reduced-motion {
   .channel,
   .control,
-  .submit {
+  .controlInvalid {
+  border-color: v.$field-error;
+}
+
+.trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.formSent {
+  color: v.$gold-pale;
+  font-size: 13px;
+  line-height: calc(19 / 13);
+}
+
+.formError {
+  color: v.$field-error;
+  font-size: 13px;
+  line-height: calc(19 / 13);
+}
+
+.submit {
     transition: none;
   }
 }

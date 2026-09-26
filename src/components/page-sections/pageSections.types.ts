@@ -14,6 +14,7 @@ export interface PageHeroContent {
 
 export interface SectionHeader {
   id?: string;
+  wide?: boolean;
   eyebrow?: string;
   title?: string;
   titleAccent?: string;

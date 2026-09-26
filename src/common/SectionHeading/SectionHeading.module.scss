@@ -1,4 +1,5 @@
 @use "variables" as v;
+@use "viewPortMixins" as vp;
 
 .heading {
   display: flex;
@@ -28,6 +29,11 @@
   font-weight: v.$weight-regular;
   line-height: calc(26.6 / 22);
   letter-spacing: 0;
+  text-wrap: balance;
+
+  @include vp.lg-up {
+    white-space: nowrap;
+  }
 
   @media (min-width: 1024px) {
     font-size: v.$h2;

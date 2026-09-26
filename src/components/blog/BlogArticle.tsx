@@ -7,7 +7,6 @@ import { CardGrid } from "@/components/page-sections/CardGrid";
 import { CompareTable } from "@/components/page-sections/CompareTable";
 import { FaqAccordion } from "@/components/page-sections/FaqAccordion";
 import { ProseSection } from "@/components/page-sections/ProseSection";
-import { SplitSection } from "@/components/page-sections/SplitSection";
 import containerStyles from "@/styles/container.module.scss";
 import styles from "./Blog.module.scss";
 import { sectionShape, splitHeading } from "./blogSections";
@@ -56,13 +55,7 @@ export function BlogArticle({ post }: { post: BlogPost }) {
           </div>
         </header>
 
-        <SplitSection
-          image={post.image}
-          imageWidth={554}
-          imageHeight={742}
-          paragraphs={post.lead}
-          groups={[]}
-        />
+        <ProseSection wide paragraphs={post.lead} />
 
         {post.sections.map((section) => {
           const { items, tables, paragraphs } = sectionShape(section);
@@ -74,6 +67,7 @@ export function BlogArticle({ post }: { post: BlogPost }) {
             return table.type === "table" ? (
               <CompareTable
                 key={key}
+                wide
                 title={title}
                 titleAccent={titleAccent}
                 intro={paragraphs[0]}
@@ -88,6 +82,7 @@ export function BlogArticle({ post }: { post: BlogPost }) {
             return (
               <CardGrid
                 key={key}
+                wide
                 title={title}
                 titleAccent={titleAccent}
                 intro={paragraphs[0]}
@@ -104,7 +99,7 @@ export function BlogArticle({ post }: { post: BlogPost }) {
           }
 
           return (
-            <ProseSection key={key} title={title} titleAccent={titleAccent} paragraphs={paragraphs} />
+            <ProseSection key={key} wide title={title} titleAccent={titleAccent} paragraphs={paragraphs} />
           );
         })}
 

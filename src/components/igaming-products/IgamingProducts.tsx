@@ -14,13 +14,7 @@ export function IgamingProducts() {
         <SectionHeading
           id="igaming-products"
           eyebrow="iGaming products"
-          title={
-            <>
-              Everything you need to
-              <br />
-              power every
-            </>
-          }
+          title="Everything you need to power every"
           highlight="experience."
         />
 

@@ -11,13 +11,7 @@ export function ModernStack() {
         <SectionHeading
           id="modern-stack"
           eyebrow="One modern stack"
-          title={
-            <>
-              One platform. Two ways
-              <br />
-              to move
-            </>
-          }
+          title="One platform. Two ways to move"
           highlight="forward."
         />
 

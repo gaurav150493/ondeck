@@ -7,6 +7,7 @@ import type { CardGridContent } from "./pageSections.types";
 
 export function CardGrid({
   id,
+  wide,
   eyebrow,
   title,
   titleAccent,
@@ -23,7 +24,7 @@ export function CardGrid({
     <section className={styles.section} id={id}>
       <div className={containerStyles.container}>
         <SectionIntro eyebrow={eyebrow} title={title} titleAccent={titleAccent} />
-        {intro ? <p className={styles.sectionIntro}>{intro}</p> : null}
+        {intro ? <p className={`${styles.sectionIntro} ${wide ? styles.fullWidth : ""}`}>{intro}</p> : null}
         {groups.map((group, groupIndex) => (
           <div key={group.label ?? "default"} className={styles.group}>
             {group.label ? <h3 className={styles.groupLabel}>{group.label}</h3> : null}
@@ -39,7 +40,7 @@ export function CardGrid({
             </ul>
           </div>
         ))}
-        {outro ? <p className={styles.sectionOutro}>{outro}</p> : null}
+        {outro ? <p className={`${styles.sectionOutro} ${wide ? styles.fullWidth : ""}`}>{outro}</p> : null}
       </div>
     </section>
   );

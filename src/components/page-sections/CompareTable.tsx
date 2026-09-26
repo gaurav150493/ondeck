@@ -11,6 +11,7 @@ export function CompareTable({
   columns,
   rows,
   intro,
+  outro,
 }: CompareTableContent) {
   return (
     <section className={styles.section} id={id}>
@@ -45,6 +46,7 @@ export function CompareTable({
             </tbody>
           </table>
         </div>
+        {outro ? <p className={styles.sectionOutro}>{outro}</p> : null}
       </div>
     </section>
   );

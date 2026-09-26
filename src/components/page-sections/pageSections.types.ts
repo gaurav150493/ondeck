@@ -14,7 +14,7 @@ export interface PageHeroContent {
 
 export interface SectionHeader {
   id?: string;
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   titleAccent?: string;
 }
@@ -52,6 +52,7 @@ export interface CompareTableContent extends SectionHeader {
   columns: string[];
   rows: CompareRow[];
   intro?: string;
+  outro?: string;
 }
 
 export interface FaqItem {

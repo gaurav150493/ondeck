@@ -3,8 +3,14 @@ import Link from "next/link";
 import { Button } from "@/common/Button/Button";
 import { ArrowRightIcon } from "@/common/icons";
 import { primaryNav } from "@/components/header/header.constants";
+import { CardGrid } from "@/components/page-sections/CardGrid";
+import { CompareTable } from "@/components/page-sections/CompareTable";
+import { FaqAccordion } from "@/components/page-sections/FaqAccordion";
+import { ProseBand } from "@/components/page-sections/ProseBand";
+import { ProseSection } from "@/components/page-sections/ProseSection";
 import containerStyles from "@/styles/container.module.scss";
 import styles from "./Blog.module.scss";
+import { sectionShape, splitHeading } from "./blogSections";
 import type { BlogPost } from "./blog.types";
 
 const dateFormatter = new Intl.DateTimeFormat("en-GB", {
@@ -19,6 +25,10 @@ const navLabels = new Map(
 
 export function BlogArticle({ post }: { post: BlogPost }) {
   const related = post.related.filter((href) => navLabels.has(href));
+  const bandIndex = post.sections.findIndex((section) => {
+    const { items, tables } = sectionShape(section);
+    return items.length === 0 && tables.length === 0;
+  });
 
   return (
     <main className={containerStyles.page}>
@@ -51,114 +61,87 @@ export function BlogArticle({ post }: { post: BlogPost }) {
           </div>
         </header>
 
-        <div className={`${containerStyles.container} ${styles.layout}`}>
-          <div className={styles.body}>
+        <section className={styles.lead}>
+          <div className={containerStyles.container}>
             {post.lead.map((paragraph) => (
-              <p key={paragraph} className={styles.paragraph}>
+              <p key={paragraph} className={styles.leadParagraph}>
                 {paragraph}
               </p>
             ))}
-
-            {post.sections.map((section) => (
-              <section key={section.heading} className={styles.section} id={slugify(section.heading)}>
-                {section.level > 1 ? (
-                  <h3 className={styles.subHeading}>{section.heading}</h3>
-                ) : (
-                  <h2 className={styles.sectionHeading}>{section.heading}</h2>
-                )}
-                {groupBlocks(section.blocks).map((group, index) =>
-                  group.type === "items" ? (
-                    <ul key={index} className={styles.points}>
-                      {group.items.map((item) => (
-                        <li key={item.title} className={styles.point}>
-                          <strong className={styles.pointTitle}>{item.title}</strong>
-                          {item.body ? ` — ${item.body}` : null}
-                        </li>
-                      ))}
-                    </ul>
-                  ) : group.type === "table" ? (
-                    <div key={index} className={styles.tableScroll}>
-                      <table className={styles.table}>
-                        <thead>
-                          <tr>
-                            <th scope="col">
-                              <span className={styles.srOnly}>Item</span>
-                            </th>
-                            {group.columns.map((column) => (
-                              <th key={column} scope="col">
-                                {column}
-                              </th>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {group.rows.map((row) => (
-                            <tr key={row.label}>
-                              <th scope="row">{row.label}</th>
-                              {row.values.map((value, column) => (
-                                <td key={group.columns[column]} data-column={group.columns[column]}>
-                                  {value}
-                                </td>
-                              ))}
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  ) : (
-                    <p key={index} className={styles.paragraph}>
-                      {group.value}
-                    </p>
-                  ),
-                )}
-              </section>
-            ))}
-
-            {post.faq.length > 0 ? (
-              <section className={styles.section}>
-                <h2 className={styles.sectionHeading}>Frequently asked questions</h2>
-                <dl className={styles.faq}>
-                  {post.faq.map((item) => (
-                    <div key={item.question} className={styles.faqItem}>
-                      <dt className={styles.question}>{item.question}</dt>
-                      <dd className={styles.answer}>{item.answer}</dd>
-                    </div>
-                  ))}
-                </dl>
-              </section>
-            ) : null}
           </div>
+        </section>
 
-          <aside className={styles.aside}>
-            <div className={styles.asideInner}>
-              <h2 className={styles.asideTitle}>In this article</h2>
-              <ul className={styles.contents}>
-                {post.sections.map((section) => (
-                  <li key={section.heading}>
-                    <a className={styles.contentsLink} href={`#${slugify(section.heading)}`}>
-                      {section.heading}
-                    </a>
+        {post.sections.map((section, index) => {
+          const { items, tables, paragraphs } = sectionShape(section);
+          const { title, titleAccent } = splitHeading(section.heading);
+          const key = section.heading;
+
+          if (tables.length > 0) {
+            const table = tables[0];
+            return table.type === "table" ? (
+              <CompareTable
+                key={key}
+                title={title}
+                titleAccent={titleAccent}
+                intro={paragraphs[0]}
+                outro={paragraphs.slice(1).join(" ") || undefined}
+                columns={table.columns}
+                rows={table.rows}
+              />
+            ) : null;
+          }
+
+          if (items.length > 0) {
+            return (
+              <CardGrid
+                key={key}
+                title={title}
+                titleAccent={titleAccent}
+                intro={paragraphs[0]}
+                outro={paragraphs.slice(1).join(" ") || undefined}
+                groups={[
+                  {
+                    items: items.map((block) =>
+                      block.type === "item" ? { title: block.title, body: block.body } : null,
+                    ).filter((item): item is { title: string; body: string } => item !== null),
+                  },
+                ]}
+              />
+            );
+          }
+
+          return index === bandIndex ? (
+            <ProseBand key={key} title={title} titleAccent={titleAccent} paragraphs={paragraphs} />
+          ) : (
+            <ProseSection key={key} title={title} titleAccent={titleAccent} paragraphs={paragraphs} />
+          );
+        })}
+
+        {post.faq.length > 0 ? (
+          <FaqAccordion
+            title="Frequently asked"
+            titleAccent="questions"
+            items={post.faq}
+          />
+        ) : null}
+
+        {related.length > 0 ? (
+          <section className={styles.relatedBand}>
+            <div className={containerStyles.container}>
+              <h2 className={styles.relatedTitle}>Read next</h2>
+              <ul className={styles.relatedList}>
+                {related.map((href) => (
+                  <li key={href}>
+                    <Link href={href} className={styles.relatedLink}>
+                      {navLabels.get(href)}
+                      <ArrowRightIcon size={16} />
+                    </Link>
                   </li>
                 ))}
               </ul>
-
-              {related.length > 0 ? (
-                <>
-                  <h2 className={styles.asideTitle}>Related</h2>
-                  <ul className={styles.related}>
-                    {related.map((href) => (
-                      <li key={href}>
-                        <Link href={href} className={styles.relatedLink}>
-                          {navLabels.get(href)}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              ) : null}
             </div>
-          </aside>
-        </div>
+          </section>
+        ) : null}
 
         <section className={styles.cta}>
           <div className={styles.ctaArt}>
@@ -180,34 +163,4 @@ export function BlogArticle({ post }: { post: BlogPost }) {
       </article>
     </main>
   );
-}
-
-type BlockGroup =
-  | { type: "p"; value: string }
-  | { type: "items"; items: { title: string; body: string }[] }
-  | { type: "table"; columns: string[]; rows: { label: string; values: string[] }[] };
-
-function groupBlocks(blocks: BlogPost["sections"][number]["blocks"]) {
-  const groups: BlockGroup[] = [];
-
-  for (const block of blocks) {
-    if (block.type === "item") {
-      const last = groups.at(-1);
-      if (last?.type === "items") last.items.push({ title: block.title, body: block.body });
-      else groups.push({ type: "items", items: [{ title: block.title, body: block.body }] });
-    } else if (block.type === "table") {
-      groups.push({ type: "table", columns: block.columns, rows: block.rows });
-    } else {
-      groups.push({ type: "p", value: block.value });
-    }
-  }
-
-  return groups;
-}
-
-function slugify(value: string) {
-  return value
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
 }

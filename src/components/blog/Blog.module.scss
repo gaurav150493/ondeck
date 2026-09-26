@@ -15,27 +15,38 @@
   position: relative;
   isolation: isolate;
   display: flex;
-  align-items: center;
-  padding-block: 99px 32px;
+  flex-direction: column;
+  padding-bottom: 24px;
 
   @include vp.lg-up {
+    flex-direction: row;
+    align-items: center;
     min-height: 460px;
     padding-block: 130px 48px;
   }
 }
 
 .heroArt {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
+  position: relative;
+  order: -1;
   overflow: hidden;
+  width: 100%;
+  margin-bottom: 24px;
+  aspect-ratio: 4 / 3;
+
+  @include vp.lg-up {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    margin-bottom: 0;
+    aspect-ratio: auto;
+  }
 }
 
 .heroArt::after {
   content: "";
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.82);
 
   @include vp.lg-up {
     background: linear-gradient(90deg, v.$black 0%, rgba(0, 0, 0, 0.72) 55%, rgba(0, 0, 0, 0.5) 100%);

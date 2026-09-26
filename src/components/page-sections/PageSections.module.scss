@@ -58,26 +58,34 @@
   position: relative;
   isolation: isolate;
   display: flex;
-  align-items: center;
-  padding-block: 99px 32px;
+  flex-direction: column;
+  padding-bottom: 24px;
 
   @include vp.lg-up {
+    flex-direction: row;
+    align-items: center;
     min-height: 577px;
     padding-block: 97px 0;
   }
 }
 
 .heroArt {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
+  position: relative;
+  order: -1;
   overflow: hidden;
+  width: 100%;
+  margin-bottom: 24px;
+  aspect-ratio: 4 / 3;
 
   @include vp.lg-up {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
     left: 30%;
+    z-index: -1;
+    margin-bottom: 0;
+    aspect-ratio: auto;
   }
 }
 
@@ -85,7 +93,6 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.8);
 
   @include vp.lg-up {
     background: linear-gradient(90deg, v.$black 0%, rgba(0, 0, 0, 0.55) 45%, rgba(0, 0, 0, 0.35) 100%);

@@ -96,7 +96,6 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 3, 11, 0.55);
 
   @include vp.lg-up {
     background: linear-gradient(

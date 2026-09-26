@@ -1,6 +1,16 @@
 @use "variables" as v;
 @use "viewPortMixins" as vp;
 
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+
+  @include vp.lg-up {
+    gap: 60px;
+  }
+}
+
 .hero {
   position: relative;
   isolation: isolate;

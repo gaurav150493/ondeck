@@ -7,7 +7,7 @@ export const post: BlogPost = {
   standfirst: "Most operators who want to leave their platform never do, because moving feels like betting the business on a weekend. It does not have to be. Here is what a safe migration actually involves.",
   seoTitle: "iGaming Platform Migration: Switch Without Losing Players",
   description: "How to move to a new iGaming platform without losing players, balances or affiliates: what must transfer, what is hard to move, and how to run the cutover safely.",
-  image: "/images/news/igaming-platform-migration.webp",
+  image: "/images/news/igaming-platform-migration-art.webp",
   author: "Ellen Tilly",
   publishedAt: "2026-08-27",
   readingMinutes: 5,

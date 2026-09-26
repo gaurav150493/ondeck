@@ -26,7 +26,7 @@ export function BlogArticle({ post }: { post: BlogPost }) {
   const related = post.related.filter((href) => navLabels.has(href));
   return (
     <main className={containerStyles.page}>
-      <article>
+      <article className={styles.stack}>
         <header className={styles.hero}>
           <div className={styles.heroArt}>
             <Image

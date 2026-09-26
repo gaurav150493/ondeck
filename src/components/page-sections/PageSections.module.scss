@@ -42,10 +42,6 @@
   color: transparent;
 }
 
-.fullWidth {
-  max-width: none;
-}
-
 .sectionIntro {
   max-width: 76ch;
   margin-top: 14px;
@@ -706,4 +702,8 @@
     font-size: v.$body;
     line-height: calc(#{v.$body-line} / #{v.$body});
   }
+}
+
+.fullWidth.fullWidth {
+  max-width: none;
 }

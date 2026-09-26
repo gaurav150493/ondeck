@@ -7,7 +7,7 @@ export const post: BlogPost = {
   standfirst: "Every provider demos well. The differences show up in the contract, the data model and the first real incident. These are the questions that expose them.",
   seoTitle: "How to Choose an iGaming Platform Provider: 12 Questions",
   description: "Twelve questions to ask any iGaming platform provider before you sign, covering costs, data ownership, exit terms, compliance and what happens when something breaks.",
-  image: "/images/news/how-to-choose-igaming-platform-provider.webp",
+  image: "/images/news/how-to-choose-igaming-platform-provider-art.webp",
   author: "Ellen Tilly",
   publishedAt: "2026-09-04",
   readingMinutes: 6,

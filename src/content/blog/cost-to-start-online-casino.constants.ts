@@ -7,7 +7,7 @@ export const post: BlogPost = {
   standfirst: "The launch cost is the number everyone asks about. The first-year cash requirement is the number that decides whether you survive. Here is how to budget for both.",
   seoTitle: "How Much Does It Cost to Start an Online Casino in 2027?",
   description: "Licensing, platform, games, payments, compliance and marketing costs broken down, with current ranges, and the first-year cash need most budgets miss.",
-  image: "/images/news/cost-to-start-online-casino.webp",
+  image: "/images/news/cost-to-start-online-casino-art.webp",
   author: "Ellen Tilly",
   publishedAt: "2026-09-10",
   readingMinutes: 6,

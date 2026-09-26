@@ -26,6 +26,7 @@
   @include vp.lg-up {
     position: absolute;
     inset: 0;
+    width: auto;
     z-index: -1;
     margin-bottom: 0;
     aspect-ratio: auto;
